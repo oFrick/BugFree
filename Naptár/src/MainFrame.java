@@ -1,4 +1,4 @@
-import hu.u_szeged.inf.események.Esemény;
+import hu.u_szeged.inf.esemenyek.Esemeny;
 
 import java.awt.GraphicsConfiguration;
 import java.awt.GridBagConstraints;
@@ -15,10 +15,10 @@ public class MainFrame extends JFrame {
 	
 	private GridBagLayout layout;
 	private GridBagConstraints constraint;
-	private HetiNézetPanel panel;
+	private HetiNezetPanel panel;
 
-	public MainFrame(String név){
-		super(név);
+	public MainFrame(String nev){
+		super(nev);
 		
 		this.setSize(1024, 768); //Ablak mérete
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ablakbezárás esemény kezelése
@@ -35,10 +35,10 @@ public class MainFrame extends JFrame {
 		constraint = new GridBagConstraints();
 		constraint.fill = GridBagConstraints.HORIZONTAL; // Maximális szélesség, szükséges magasság
 		
-		panel = new HetiNézetPanel();
+		panel = new HetiNezetPanel();
 		setContentPane(panel);
 		
-		panel.setMező(new Esemény("Gábor szülinap", new GregorianCalendar(2014, 5, 3, 4, 11), 2));
+		panel.setMezo(new Esemeny("Gábor szülinap", new GregorianCalendar(2014, 5, 3, 4, 11), 2));
 		
 	}
 
