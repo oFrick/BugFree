@@ -36,11 +36,7 @@ public class Main {
 
 	private static void SanyiTeszt() throws IOException{
 		// TODO Auto-generated method stub
-		List<Esemeny> lista = new ArrayList<>();
-		lista=EsemenyOlvaso.Olvass("Sanyi", 2014, 21);
-		/*if (lista.isEmpty())
-			System.out.println("Üres");*/
-		EsemenyOlvaso.Irj("Sanyi", 2014, 21, lista);
+		
 		System.out.println("--------------------SanyiTeszt vége----------------------------");
 	}
 	

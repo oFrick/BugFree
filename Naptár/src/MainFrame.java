@@ -5,7 +5,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -39,10 +41,11 @@ public class MainFrame extends JFrame {
 		panel = new HetiNezetPanel();
 		setContentPane(panel);
 		
-		Esemeny test1 = new SzuliNap("Gábor", new GregorianCalendar(2014, 5, 3, 4, 11), 2);
-		Esemeny test2 = new Munkahely("Találkozó", new GregorianCalendar(2014, 5, 6, 6, 11), 2, "Microsoft", "Bill Gates", 5);
-		panel.setMezo(test1);
-		panel.setMezo(test2);
+		List<Esemeny> esemenyek = new ArrayList<>();
+		esemenyek=hu.u_szeged.inf.esemenyek.EsemenyOlvaso.Olvass("Sanyi", 2014, 21);
+		for (int i=0; i<esemenyek.size(); i++){
+			panel.setMezo(esemenyek.get(i));
+		}
 		
 	}
 
