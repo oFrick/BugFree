@@ -2,18 +2,20 @@ package hu.u_szeged.inf.esemenyek;
 
 import java.util.Calendar;
 
-public class Esemeny {
+public abstract class Esemeny{
 	
+	private Boolean hibas=false;
+	private String nev="";
+	private String tipus;
 	private Calendar kezdet;
 	private int idotartam;
-	private String nev;
 	
-	public Esemeny(String nev, Calendar kezdet, int idotartam){
+	/*ublic Esemeny(String nev, Calendar kezdet, int idotartam){
 		
 		this.nev = nev;
 		this.kezdet = kezdet;
 		this.idotartam = idotartam;
-	}
+	}*/
 
 	public Calendar getKezdet() {
 		return kezdet;
@@ -41,6 +43,22 @@ public class Esemeny {
 	
 	public String toString(){
 		return getNev();
+	}
+
+	public String getTipus() {
+		return tipus;
+	}
+
+	public void setTipus(String tipus) {
+		this.tipus = tipus;
+	}
+
+	public Boolean getHibas() {
+		return hibas;
+	}
+
+	public void setHibas(Boolean hibas) {
+		this.hibas = hibas;
 	}
 	
 	

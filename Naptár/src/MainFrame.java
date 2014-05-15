@@ -1,4 +1,4 @@
-import hu.u_szeged.inf.esemenyek.Esemeny;
+import hu.u_szeged.inf.esemenyek.*;
 
 import java.awt.GraphicsConfiguration;
 import java.awt.GridBagConstraints;
@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
+@SuppressWarnings({ "unused", "serial" })
 public class MainFrame extends JFrame {
 	
 	private GridBagLayout layout;
@@ -20,7 +21,7 @@ public class MainFrame extends JFrame {
 	public MainFrame(String nev){
 		super(nev);
 		
-		this.setSize(1024, 768); //Ablak mérete
+		this.setSize(1024, 756); //Ablak mérete
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ablakbezárás esemény kezelése
 				
 		loadMenus();
@@ -38,7 +39,10 @@ public class MainFrame extends JFrame {
 		panel = new HetiNezetPanel();
 		setContentPane(panel);
 		
-		panel.setMezo(new Esemeny("Gábor szülinap", new GregorianCalendar(2014, 5, 3, 4, 11), 2));
+		Esemeny test1 = new SzuliNap("Gábor", new GregorianCalendar(2014, 5, 3, 4, 11), 2);
+		Esemeny test2 = new Munkahely("Találkozó", new GregorianCalendar(2014, 5, 6, 6, 11), 2, "Microsoft", "Bill Gates", 5);
+		panel.setMezo(test1);
+		panel.setMezo(test2);
 		
 	}
 
