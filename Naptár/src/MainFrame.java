@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -20,7 +21,7 @@ public class MainFrame extends JFrame {
 	private GridBagLayout layout;
 	private GridBagConstraints constraint;
 	private HetiNezetPanel panel;
-
+	
 	public MainFrame(String nev){
 		super(nev);
 		mutat = new GregorianCalendar();
@@ -29,7 +30,6 @@ public class MainFrame extends JFrame {
 				
 		loadMenus();
 		loadContent();
-		
 		this.setVisible(true);
 	}
 

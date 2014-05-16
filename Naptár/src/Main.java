@@ -1,10 +1,7 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.SwingUtilities;
 
-import hu.u_szeged.inf.esemenyek.*;
 
 
 public class Main {
@@ -36,7 +33,6 @@ public class Main {
 
 	private static void SanyiTeszt() throws IOException{
 		// TODO Auto-generated method stub
-		
 		System.out.println("--------------------SanyiTeszt vége----------------------------");
 	}
 	

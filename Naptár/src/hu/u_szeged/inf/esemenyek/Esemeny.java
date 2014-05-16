@@ -4,8 +4,7 @@ import java.util.Calendar;
 
 public abstract class Esemeny{
 	
-	private Boolean hibas=false;
-	private String nev="";
+	private String nev;
 	private String tipus;
 	private Calendar kezdet;
 	private int idotartam;
@@ -51,14 +50,6 @@ public abstract class Esemeny{
 
 	public void setTipus(String tipus) {
 		this.tipus = tipus;
-	}
-
-	public Boolean getHibas() {
-		return hibas;
-	}
-
-	public void setHibas(Boolean hibas) {
-		this.hibas = hibas;
 	}
 	
 	

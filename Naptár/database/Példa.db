@@ -1,0 +1,17 @@
+bd //Szülinap
+Program //Ünnepelt neve
+05 19 02 00 2 //Hónap nap óra perc időtartam
+0 //Hány éves lesz (-1 azt jelenti nincs megadva, azt ne jelenítsétek meg!)
+- //Helyszín
+- //Ajándék
+wp //Munka (NINCS ÜRES SOR KÖZÖTTÜK!)
+ZH //Esemény neve
+05 20 10 30 2 //Hónap nap óra perc időtartam
+0 //Határidő napok
+Fülöp Vanda //Ügyfél neve
+SZTE //Cégnév
+xm //Vizsga
+Kalkulus //Tantárgy
+05 20 10 30 2 //Hónap nap óra perc időtartam
+M1 terem //Helyszín
+Fülöp Vanda //Vizsgáztató

@@ -1,12 +1,9 @@
 package hu.u_szeged.inf.esemenyek;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.Calendar;
 import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-//import java.io.IOException;
 import java.util.Scanner;
 /**
  * Fájlok kezelésére van
@@ -17,7 +14,7 @@ public class EsemenyOlvaso {
 	
 	/**
 	 * Adott év adott hetét tartalmazó fájl olvasása
-	 * Tartalmaz hibakezelést
+	 * Nyomokban paraméter hibakezelést tartalmaz
 	 * @param ev Hanyadik év
 	 * @param het Hanyadik hét
 	 * @param username Felhasználó akinek vizsgáljuk a naptárját
@@ -34,7 +31,7 @@ public class EsemenyOlvaso {
 		utvonal="database/"+username.toUpperCase()+"/"+ev+"/"+het+".db";
 		Scanner Olvaso;
 		try {
-			System.out.println("File ovasása: "+utvonal);
+			System.out.printf("File ovasása: %s elkezdve\n", utvonal);
 			Olvaso = new Scanner(new File(utvonal));
 			String tipus;
 			while (Olvaso.hasNext()){
@@ -42,31 +39,22 @@ public class EsemenyOlvaso {
 				tipus = Olvaso.nextLine();
 				switch (tipus){
 					case "bd":{ //Birthday - Szülinap
-						String unnepelt=Olvaso.nextLine();
-						GregorianCalendar kezdet = new GregorianCalendar(ev, Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt());
-						int idotartam = Olvaso.nextInt();
-						int evesLesz = Olvaso.nextInt();
-						Olvaso.nextLine();
-						String helyszin = Olvaso.nextLine();
-						String ajandek = Olvaso.nextLine();
-						lista.add(new SzuliNap(unnepelt, kezdet, idotartam, evesLesz, helyszin, ajandek));
+						lista.add(new SzuliNap(Olvaso, ev));
 						break;
 					}
 					case "wp":{ //Workplace - Munkahely
-						String nev = Olvaso.nextLine();
-						GregorianCalendar kezdet = new GregorianCalendar(ev, Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt());
-						int idotartam = Olvaso.nextInt();
-						int hataridoNapok = Olvaso.nextInt();
-						Olvaso.nextLine();
-						String ugyfelNev = Olvaso.nextLine();
-						String cegNev = Olvaso.nextLine();
-						lista.add(new Munkahely(nev, kezdet, idotartam, cegNev, ugyfelNev, hataridoNapok));
+						lista.add(new Munkahely(Olvaso, ev));
+						break;
+					}
+					case "xm":{ //Exam - vizsga
+						lista.add(new Vizsga(Olvaso, ev));
 						break;
 					}
 				}
 				System.out.printf("%3d: %s beolvasva\n", lista.size()-1, lista.get(lista.size()-1).toString());
 				
 			}
+			System.out.printf("File ovasása: %s befejezve\n", utvonal);
 			Olvaso.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Fájl nem található, erre a hétre nincs még bejegyzés");
@@ -75,7 +63,8 @@ public class EsemenyOlvaso {
 	}
 	/**
 	 * Adott év adott hetét tartalmazó fájl kiírása
-	 * Tartalmaz hibakezelést
+	 * Nyomokban paraméter hibakezelést tartalmaz
+	 * Amennyiben üres listát kap, megpróbálja kitörölni az adott hét adatbázisát
 	 * @param ev Hanyadik év
 	 * @param het Hanyadik hét
 	 * @param username Felhasználó akinek vizsgáljuk a naptárját
@@ -93,6 +82,7 @@ public class EsemenyOlvaso {
 			fajl.delete();
 		}
 		else{
+			System.out.printf("File írása: %s elkezdve\n", utvonal);
 			PrintStream Iro;
 			try {
 				Iro = new PrintStream(utvonal);
@@ -101,23 +91,21 @@ public class EsemenyOlvaso {
 						case "Szulinap":
 							SzuliNap szn = (SzuliNap) lista.get(i);
 							Iro.println("bd");
-							Iro.println(szn.getUnnepelt());
-							Iro.printf("%02d %02d %02d %02d %d\n", szn.getKezdet().get(Calendar.MONTH), szn.getKezdet().get(Calendar.DAY_OF_MONTH), szn.getKezdet().get(Calendar.HOUR), szn.getKezdet().get(Calendar.MINUTE), szn.getIdotartam());
-							Iro.println(szn.getEvesLesz());
-							Iro.println(szn.getHelyszin());
-							Iro.println(szn.getAjandek());
+							szn.Printer(Iro);
 							break;
 						case "Munka":
 							Munkahely mk = (Munkahely) lista.get(i);
 							Iro.println("wp");
-							Iro.println(mk.getNev());
-							Iro.printf("%02d %02d %02d %02d %d\n", mk.getKezdet().get(Calendar.MONTH), mk.getKezdet().get(Calendar.DAY_OF_MONTH), mk.getKezdet().get(Calendar.HOUR), mk.getKezdet().get(Calendar.MINUTE), mk.getIdotartam());
-							Iro.printf("%d\n", mk.getHataridoNapok());
-							Iro.println(mk.getUgyfelNev());
-							Iro.println(mk.getCegNev());
+							mk.Printer(Iro);
+							break;
+						case "Vizsga":
+							Vizsga v = (Vizsga) lista.get(i);
+							Iro.println("xm");
+							v.Printer(Iro);
 							break;
 					}
 				}
+				System.out.printf("File írása: %s befejezve\n", utvonal);
 				Iro.close();
 			} catch (FileNotFoundException e) {
 				System.out.println("Fájl írási hiba");

@@ -1,7 +1,7 @@
 import hu.u_szeged.inf.esemenyek.Esemeny;
 
 import java.awt.Dimension;
-import java.awt.LayoutManager;
+//import java.awt.LayoutManager;
 import java.util.Calendar;
 
 import javax.swing.BorderFactory;
@@ -13,6 +13,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.TableView.TableRow;
 
 
+@SuppressWarnings("serial")
 public class HetiNezetPanel extends JPanel {
 	
 	private JTable tabla;
