@@ -82,6 +82,10 @@ public class EsemenyOlvaso {
 	 * @author Rátkai Sándor
 	 */
 	public static void Irj(String username, int ev, int het, List<Esemeny> lista){
+		het--;
+		ev+=(het/52);
+		het%=52;
+		het++;
 		String utvonal="database/"+username.toUpperCase()+"/"+ev+"/"+het+".db";
 		File fajl = new File(utvonal);
 		if (lista.isEmpty()){

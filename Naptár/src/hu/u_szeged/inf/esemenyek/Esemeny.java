@@ -10,7 +10,7 @@ public abstract class Esemeny{
 	private Calendar kezdet;
 	private int idotartam;
 	
-	/*ublic Esemeny(String nev, Calendar kezdet, int idotartam){
+	/*public Esemeny(String nev, Calendar kezdet, int idotartam){
 		
 		this.nev = nev;
 		this.kezdet = kezdet;

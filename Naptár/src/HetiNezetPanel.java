@@ -17,10 +17,10 @@ public class HetiNezetPanel extends JPanel {
 	
 	private JTable tabla;
 	private JScrollPane scrollPane;
-
-	public HetiNezetPanel() {
+	private int het;
+	public HetiNezetPanel(int het) {
 		super();
-		
+		this.het=het;
 		betolt();
 	}
 	
@@ -53,7 +53,7 @@ public class HetiNezetPanel extends JPanel {
 				{"23:00-23:59","","","","","","",""},
 		};
 		
-		String[] columnNames = {"##",
+		String[] columnNames = {Integer.toString(het)+". hét",
                 "Hétfő",
                 "Kedd",
                 "Szerda",
@@ -90,13 +90,13 @@ public class HetiNezetPanel extends JPanel {
 		
 	}
 	
-	/**Beállítja a tába adott cellájának tartalmát
+	/**Beállítja a tábla adott cellájának tartalmát
 	 * @param sor int - a sor száma a táblázatban
 	 * @param oszlop int -az oszlop száma a táblázatban
 	 * @param adat String - az adat amit be szeretnénk írni
 	 * 2014.05.11.
 	 */
-	private void setMezo(int sor, int oszlop, String adat){
+	public void setMezo(int sor, int oszlop, String adat){
 		tabla.setValueAt(adat, sor, oszlop);
 	}
 	
@@ -104,11 +104,11 @@ public class HetiNezetPanel extends JPanel {
 		Calendar kezd = esemeny.getKezdet();
 		int ev = kezd.get(Calendar.YEAR);
 		int honap = kezd.get(Calendar.MONTH);
-		int nap = kezd.get(Calendar.DAY_OF_MONTH);
+		int nap = kezd.get(Calendar.DAY_OF_WEEK);
 		int ora = kezd.get(Calendar.HOUR_OF_DAY);
 		int perc = kezd.get(Calendar.MINUTE);
 		
-		tabla.setValueAt(esemeny, ora, 1);
+		tabla.setValueAt(esemeny.toString(), ora, (nap+3)%7);
 	}
 
 }
