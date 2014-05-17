@@ -1,5 +1,7 @@
 package hu.u_szeged.inf.időtartamok;
 
+import hu.u_szeged.inf.idotartamok.Napok;
+
 import java.util.Calendar;
 
 /**

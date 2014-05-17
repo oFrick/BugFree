@@ -1,5 +1,7 @@
 package hu.u_szeged.inf.időtartamok;
 
+import hu.u_szeged.inf.idotartamok.Napok;
+
 import java.util.Calendar;
 
 /**
@@ -40,12 +42,12 @@ public class Hét extends Időtartam {
 		
 		napok = new Nap[7];	
 		//Napok példányosítása
-		napok[0] = new Nap(Napok.HÉTFŐ, this);
+		napok[0] = new Nap(Napok.HETFO, this);
 		napok[1] = new Nap(Napok.KEDD, this);
 		napok[2] = new Nap(Napok.SZERDA, this);
-		napok[3] = new Nap(Napok.CSÜTÖRTÖK, this);
-		napok[4] = new Nap(Napok.PÉNTEK, this);
+		napok[3] = new Nap(Napok.CSUTORTOK, this);
+		napok[4] = new Nap(Napok.PENTEK, this);
 		napok[5] = new Nap(Napok.SZOMBAT, this);
-		napok[6] = new Nap(Napok.VASÁRNAP, this);
+		napok[6] = new Nap(Napok.VASARNAP, this);
 	}
 }
