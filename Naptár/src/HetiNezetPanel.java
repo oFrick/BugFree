@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -17,12 +18,14 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.TableView.TableRow;
 
 
-@SuppressWarnings("serial")
 public class HetiNezetPanel extends JPanel {
 	
 	private JTable tabla;
 	private JScrollPane scrollPane;
 	private TablaModell modell;
+	private JButton balra;
+	private JButton jobbra;
+	private JButton megnyit;
 	
 	private int het;
 
@@ -75,6 +78,7 @@ public class HetiNezetPanel extends JPanel {
 		tabla = new JTable();
 		modell = new TablaModell(data, columnNames);
 		tabla.setModel(modell);
+		tabla.setEnabled(false);
 		
 		scrollPane = new JScrollPane(tabla);
 		tablatBeallit();
@@ -126,8 +130,8 @@ public class HetiNezetPanel extends JPanel {
 			modell.setEsemeny(esemeny, ora, nap-1);
 		}else {
 			//TODO ezt a debug jellegű figyelmeztető üzenetet kivenni
-			SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");
-			System.out.println("A(z)"+esemeny.toString()+" nevű esemény nem ezen a héten van! ("+dt.format(esemeny.getKezdet().getTime())+")!!!");
+			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+			System.out.println("A(z)"+esemeny.getNev()+" nevű esemény nem ezen a héten van! ("+dt.format(esemeny.getKezdet().getTime())+")!!!");
 		}
 		
 		

@@ -28,7 +28,7 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame(String nev){
 		super(nev);
-		mutat = new GregorianCalendar(); //Aktuális dátum az alap érték
+		mutat = new GregorianCalendar();
 		this.setSize(1024, 756); //Ablak mérete
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ablakbezárás esemény kezelése
 				
@@ -51,8 +51,10 @@ public class MainFrame extends JFrame {
 		for (int i=0; i<esemenyek.size(); i++){
 			panel.setMezo(esemenyek.get(i));
 		}
-		//Munkahely es = new Munkahely("állásinterjú", new GregorianCalendar(2014, 4, 15, 12, 3), 4, "Dani kft", "Nagy Béla", 3); //Azaz ez 2014 5 15.-e !!!!!! (hónap+1 az aktuális dátum)
-		//panel.setMezo(es);
+		
+		//Teszt munkahelyi esemény
+		Munkahely es = new Munkahely("állásinterjú", new GregorianCalendar(2014, 4, 15, 12, 3), 4, "Dani kft", "Nagy Béla", 3); //Azaz ez 2014 5 15.-e !!!!!! (hónap+1 az aktuális dátum)
+		panel.setMezo(es);
 		
 	}
 
@@ -60,7 +62,7 @@ public class MainFrame extends JFrame {
 		// TODO Auto-generated method stub
 		menubar = new JMenuBar();
 		this.setJMenuBar(menubar);
-		fajlMenu = new JMenu("Fájl");
+		fajlMenu = new JMenu("Fáj");
 		menubar.add(fajlMenu);
 	}
 

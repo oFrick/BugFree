@@ -16,18 +16,18 @@ public class TablaModell extends DefaultTableModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setEsemeny(Esemeny esemény, int row, int column) {
+	public void setEsemeny(Esemeny esemeny, int row, int column) {
 		// TODO Auto-generated method stub
 		Esemeny e = ((Esemeny)this.getValueAt(row, column));
-		e = esemény;
-		super.setValueAt(esemény.getNev(), row, column);
+		e = esemeny;
+		super.setValueAt(esemeny.toString(), row, column);
 	}
 	
 	
 	@Override
 	public void setValueAt(Object aValue, int row, int column) { //ÜRES, MERT NEM HASZNÁLHATÓ ÁTNEVEZÉSHEZ
-		//Esemény e = (Esemény)this.getValueAt(row, column);
-		//e.setNév((String)aValue);
+		//Esemeny e = (Esemeny)this.getValueAt(row, column);
+		//e.setNev((String)aValue);
 		//fireTableCellUpdated(row,column);
 	}
 	
