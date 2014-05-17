@@ -59,10 +59,10 @@ public class Munkahely extends Esemeny{
 	}
 	
 	public String toString(){
-		String output=getNev();
+		String str = "<html><body><b>"+getNev()+"</b>";
 		if (ugyfelNev!="-")
-			output+=" ("+ugyfelNev+")";
-		return output;
+			str+="<br> ("+ugyfelNev+")</body></html>";
+		return str;
 	}
 	
 	public int getHataridoNapok() {
@@ -87,5 +87,9 @@ public class Munkahely extends Esemeny{
 
 	public void setCegNev(String cegNev) {
 		this.cegNev = cegNev;
+	}
+	
+	public void rajzol( ){
+		
 	}
 }
