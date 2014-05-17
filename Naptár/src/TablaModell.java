@@ -16,11 +16,11 @@ public class TablaModell extends DefaultTableModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setEsemeny(Esemeny esemény, int row, int column) {
+	public void setEsemeny(Esemeny esemeny, int row, int column) {
 		// TODO Auto-generated method stub
 		Esemeny e = ((Esemeny)this.getValueAt(row, column));
-		e = esemény;
-		super.setValueAt(esemény.toString(), row, column);
+		e = esemeny;
+		super.setValueAt(esemeny.toString(), row, column);
 	}
 	
 	
