@@ -1,11 +1,15 @@
+import java.io.IOException;
+
 import javax.swing.SwingUtilities;
+
 
 
 public class Main {
 	
+	@SuppressWarnings("unused")
 	private static MainFrame frame;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		SanyiTeszt();
 		DaniTeszt();
@@ -27,9 +31,8 @@ public class Main {
 		
 	}
 
-	private static void SanyiTeszt() {
+	private static void SanyiTeszt() throws IOException{
 		// TODO Auto-generated method stub
-		
 		System.out.println("--------------------SanyiTeszt vége----------------------------");
 	}
 	
