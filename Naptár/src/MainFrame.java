@@ -4,6 +4,8 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings({ "unused", "serial" })
 public class MainFrame extends JFrame {
+	private MainFrame sajat;
 	private Calendar datum;
 	private GridBagLayout layout;
 	private GridBagConstraints constraint;
@@ -43,9 +46,12 @@ public class MainFrame extends JFrame {
 		super(nev);
 		this.setSize(1024, 756); //Ablak mérete
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ablakbezárás esemény kezelése
+		
+		this.sajat = this;
 				
 		loadMenus();
 		loadContent();
+		EsemenyKezelok();
 		this.setVisible(true);
 	}
 
@@ -119,11 +125,23 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void setPane(JPanel ujPanel){
-		this.setContentPane(ujPanel);
+		setContentPane(ujPanel);
+		ujPanel.revalidate();
 	}
 	
 	public void setDefaultPane(){
-		this.setContentPane(panel);
+		setContentPane(panel);
+		panel.revalidate();
+	}
+	
+	private void EsemenyKezelok(){
+		ujMunkahely.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				setPane(new UjMunkahelyPanel(sajat));				
+			}
+		});
 	}
 
 }
