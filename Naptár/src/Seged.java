@@ -78,7 +78,6 @@ public class Seged {
 			Calendar most = new GregorianCalendar(m.get(Calendar.YEAR), m.get(Calendar.MONTH), m.get(Calendar.DAY_OF_MONTH));
 			Calendar az = new GregorianCalendar(ev, ho-1, nap);
 			eredmeny = most.compareTo(az)<=0;
-			System.out.printf("%d %d %d ", az.get(Calendar.YEAR), az.get(Calendar.MONTH), az.get(Calendar.DAY_OF_MONTH));
 		}
 		return eredmeny;
 	}

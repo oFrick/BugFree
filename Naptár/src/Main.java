@@ -46,8 +46,8 @@ public class Main {
 		System.out.println(Seged.datum(az.get(Calendar.YEAR), az.get(Calendar.MONTH)+1, az.get(Calendar.DAY_OF_MONTH)+1)+" holnap");
 		System.out.println(Seged.datum(2014, 5, 19)+" 19.");
 		System.out.println(Seged.datum(2014, 5, 20)+" 20.");
-		System.out.println(Seged.datum(2014, 5, 31));
-		System.out.println(Seged.datum(2014, 6, 31));
+		System.out.println(Seged.datum(2014, 5, 31)+" 5. hó 31.");
+		System.out.println(Seged.datum(2014, 6, 31)+" 6. hó 31.");
 		System.out.println(Seged.datum(2400, 2, 29));
 		System.out.println("--------------------SanyiTeszt vége----------------------------");
 	}
