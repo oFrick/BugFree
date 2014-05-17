@@ -2,6 +2,7 @@ package hu.u_szeged.inf.időtartamok;
 
 import hu.u_szeged.inf.események.Esemény;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -13,6 +14,9 @@ import java.util.List;
  */
 public abstract class Időtartam {
 	
+	/**
+	 * Az adott időtartam alatt végbemenő események.
+	 */
 	private List<Esemény> események;
 
 	/**

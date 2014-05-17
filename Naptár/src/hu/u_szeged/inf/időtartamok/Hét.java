@@ -1,5 +1,7 @@
 package hu.u_szeged.inf.időtartamok;
 
+import java.util.Calendar;
+
 /**
  * A Naptár egy hetét reprezentálja. Tárolja a hozzá tartozó napokat, illetve a héten lévő összes eseményt.<br>
  * Egyenlőre ez a legnagyobb időtartam.<br><br>
@@ -36,12 +38,14 @@ public class Hét extends Időtartam {
 		this.év = év;
 		this.hétSzám = hétSzám;
 		
-		napok = new Nap[7];
-		
+		napok = new Nap[7];	
 		//Napok példányosítása
-		for(int i=0; i<7; i++){
-			Nap nap = new Nap();
-			napok[i] = nap;
-		}
+		napok[0] = new Nap(Napok.HÉTFŐ, this);
+		napok[1] = new Nap(Napok.KEDD, this);
+		napok[2] = new Nap(Napok.SZERDA, this);
+		napok[3] = new Nap(Napok.CSÜTÖRTÖK, this);
+		napok[4] = new Nap(Napok.PÉNTEK, this);
+		napok[5] = new Nap(Napok.SZOMBAT, this);
+		napok[6] = new Nap(Napok.VASÁRNAP, this);
 	}
 }

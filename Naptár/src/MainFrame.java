@@ -8,6 +8,8 @@ import java.io.File;
 import java.util.GregorianCalendar;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 
@@ -16,6 +18,9 @@ public class MainFrame extends JFrame {
 	private GridBagLayout layout;
 	private GridBagConstraints constraint;
 	private HetiNézetPanel panel;
+	
+	private JMenuBar menubar;
+	private JMenu fájlMenü;
 
 	public MainFrame(String név){
 		super(név);
@@ -38,13 +43,16 @@ public class MainFrame extends JFrame {
 		panel = new HetiNézetPanel();
 		setContentPane(panel);
 		
-		panel.setMező(new Esemény("Gábor szülinap", new GregorianCalendar(2014, 5, 3, 4, 11), 2));
+		panel.setMező(new Esemény("Gábor szülinap", new GregorianCalendar(2014, 4, 12, 4, 11), 2));
 		
 	}
 
 	private void loadMenus() {
 		// TODO Auto-generated method stub
-		
+		menubar = new JMenuBar();
+		this.setJMenuBar(menubar);
+		fájlMenü = new JMenu("Fáj");
+		menubar.add(fájlMenü);
 	}
 
 }

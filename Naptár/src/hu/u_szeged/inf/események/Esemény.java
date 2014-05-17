@@ -29,6 +29,7 @@ public class Esemény {
 
 	public void setKezdet(Calendar kezdet) {
 		this.kezdet = kezdet;
+		System.out.println("változott");
 	}
 
 	public void setIdőtartam(int időtartam) {
@@ -40,6 +41,10 @@ public class Esemény {
 	}
 	
 	public String toString(){
+		return getNév();
+	}
+	
+	public String kiírCím(){
 		return getNév();
 	}
 	
