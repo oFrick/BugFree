@@ -4,6 +4,9 @@ import java.io.PrintStream;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 /**
  * Munkahely osztály az üzleti eseményekhez
  * @author Rátkai Sándor
@@ -87,9 +90,5 @@ public class Munkahely extends Esemeny{
 
 	public void setCegNev(String cegNev) {
 		this.cegNev = cegNev;
-	}
-	
-	public void rajzol( ){
-		
 	}
 }
