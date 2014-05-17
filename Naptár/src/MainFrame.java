@@ -106,6 +106,7 @@ public class MainFrame extends JFrame {
 	 */
 	public List<Esemeny> betoltHet(int differencia){
 		datum.set(Calendar.WEEK_OF_YEAR, datum.get(Calendar.WEEK_OF_YEAR)+differencia);
+			//TODO debug eltávolítása
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			System.out.println("Hét váltása erre: "+df.format(datum.getTime()));
 		List<Esemeny> esemenyek = new ArrayList<>();
@@ -115,6 +116,14 @@ public class MainFrame extends JFrame {
 		}
 		
 		return esemenyek;
+	}
+	
+	public void setPane(JPanel ujPanel){
+		this.setContentPane(ujPanel);
+	}
+	
+	public void setDefaultPane(){
+		this.setContentPane(panel);
 	}
 
 }
