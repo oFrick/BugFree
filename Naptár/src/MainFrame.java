@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -47,7 +48,7 @@ public class MainFrame extends JFrame {
 		panel = new HetiNezetPanel(datum.get(Calendar.WEEK_OF_YEAR), this);
 		setContentPane(panel);
 		
-		betoltHet(datum.get(Calendar.WEEK_OF_YEAR));
+		betoltHet(0);
 		
 		
 		
@@ -65,8 +66,15 @@ public class MainFrame extends JFrame {
 		menubar.add(fajlMenu);
 	}
 	
-	public List<Esemeny> betoltHet(int het){
-		datum.set(Calendar.WEEK_OF_YEAR, het);
+	/**Betölti a megfelelő hetet a táblázatba. A fájlból először beolvassa az aktuális hetet
+	 * @param differencia int - Az előzőleg aktuális héthezképest eltelt hetek száma. Tehát ha egy hetet ugrunk előre, akkor +1.
+	 * @return
+	 * 2014.05.17.
+	 */
+	public List<Esemeny> betoltHet(int differencia){
+		datum.set(Calendar.WEEK_OF_YEAR, datum.get(Calendar.WEEK_OF_YEAR)+differencia);
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			System.out.println("Hét váltása erre: "+df.format(datum.getTime()));
 		List<Esemeny> esemenyek = new ArrayList<>();
 		esemenyek = EsemenyOlvaso.Olvass("Sanyi", this.datum.get(Calendar.YEAR), this.datum.get(Calendar.WEEK_OF_YEAR));
 		for (int i=0; i<esemenyek.size(); i++){

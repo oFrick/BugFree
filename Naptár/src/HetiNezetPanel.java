@@ -188,7 +188,7 @@ public class HetiNezetPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				het--;
 				cleartable();
-				frame.betoltHet(het);
+				frame.betoltHet(-1);
 				updateTable();
 				
 			}
@@ -200,7 +200,7 @@ public class HetiNezetPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				het++;
 				cleartable();
-				frame.betoltHet(het);
+				frame.betoltHet(1);
 				updateTable();
 				
 			}
