@@ -4,6 +4,8 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings({ "unused", "serial" })
 public class MainFrame extends JFrame {
+	private MainFrame sajat;
 	private Calendar datum;
 	private GridBagLayout layout;
 	private GridBagConstraints constraint;
@@ -43,9 +46,12 @@ public class MainFrame extends JFrame {
 		super(nev);
 		this.setSize(1024, 756); //Ablak mérete
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ablakbezárás esemény kezelése
+		
+		this.sajat = this;
 				
 		loadMenus();
 		loadContent();
+		EsemenyKezelok();
 		this.setVisible(true);
 	}
 
@@ -106,6 +112,7 @@ public class MainFrame extends JFrame {
 	 */
 	public List<Esemeny> betoltHet(int differencia){
 		datum.set(Calendar.WEEK_OF_YEAR, datum.get(Calendar.WEEK_OF_YEAR)+differencia);
+			//TODO debug eltávolítása
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			System.out.println("Hét váltása erre: "+df.format(datum.getTime()));
 		List<Esemeny> esemenyek = new ArrayList<>();
@@ -115,6 +122,26 @@ public class MainFrame extends JFrame {
 		}
 		
 		return esemenyek;
+	}
+	
+	public void setPane(JPanel ujPanel){
+		setContentPane(ujPanel);
+		ujPanel.revalidate();
+	}
+	
+	public void setDefaultPane(){
+		setContentPane(panel);
+		panel.revalidate();
+	}
+	
+	private void EsemenyKezelok(){
+		ujMunkahely.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				setPane(new UjMunkahelyPanel(sajat));				
+			}
+		});
 	}
 
 }
