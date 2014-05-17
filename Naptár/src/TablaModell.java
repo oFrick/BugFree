@@ -20,7 +20,7 @@ public class TablaModell extends DefaultTableModel {
 		// TODO Auto-generated method stub
 		Esemeny e = ((Esemeny)this.getValueAt(row, column));
 		e = esemény;
-		super.setValueAt(esemény.getNev(), row, column);
+		super.setValueAt(esemény.toString(), row, column);
 	}
 	
 	
