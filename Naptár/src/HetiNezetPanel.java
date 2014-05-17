@@ -2,6 +2,7 @@ import hu.u_szeged.inf.esemenyek.Esemeny;
 
 import java.awt.Dimension;
 import java.awt.LayoutManager;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,6 +17,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.TableView.TableRow;
 
 
+@SuppressWarnings("serial")
 public class HetiNezetPanel extends JPanel {
 	
 	private JTable tabla;
@@ -107,15 +109,27 @@ public class HetiNezetPanel extends JPanel {
 		tabla.setValueAt(adat, sor, oszlop);
 	}
 	
+	/**Beállítja a táblában az eseményt.<br><br>
+	 * Ha az esemény nem az aktuális héten található, akkor <b>NEM</b> lesz megjelenítve!!!
+	 * @param esemeny {@link Esemeny} - az esemény, amelyet be szeretnénk szúrni/módosítani szeretnénk
+	 * 2014.05.17.
+	 */
 	public void setMezo(Esemeny esemeny){
 		Calendar kezd = esemeny.getKezdet();
-		int ev = kezd.get(Calendar.YEAR);
-		int honap = kezd.get(Calendar.MONTH);
-		int nap = kezd.get(Calendar.DAY_OF_WEEK);
-		int ora = kezd.get(Calendar.HOUR_OF_DAY);
-		int perc = kezd.get(Calendar.MINUTE);
+		if(het == kezd.get(Calendar.WEEK_OF_YEAR)){
+			int ev = kezd.get(Calendar.YEAR);
+			int honap = kezd.get(Calendar.MONTH);
+			int nap = kezd.get(Calendar.DAY_OF_WEEK);
+			int ora = kezd.get(Calendar.HOUR_OF_DAY);
+			int perc = kezd.get(Calendar.MINUTE);
+			
+			modell.setEsemeny(esemeny, ora, nap-1);
+		}else {
+			//TODO ezt a debug jellegű figyelmeztető üzenetet kivenni
+			SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");
+			System.out.println("A(z)"+esemeny.toString()+" nevű esemény nem ezen a héten van! ("+dt.format(esemeny.getKezdet().getTime())+")!!!");
+		}
 		
-		modell.setEsemeny(esemeny, ora, nap-1);
 		
 	}
 
