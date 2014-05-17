@@ -70,7 +70,7 @@ public class MainFrame extends JFrame {
 		
 		
 		//Teszt munkahelyi esemény
-		Munkahely es = new Munkahely("állásinterjú", new GregorianCalendar(2014, 4, 18, 12, 3), 4, "Dani kft", "Nagy Béla", 3); //Azaz ez 2014 5 15.-e !!!!!! (hónap+1 az aktuális dátum)
+		Munkahely es = new Munkahely("állásinterjú", new GregorianCalendar(2014, 4, 19, 3, 3), 4, "Dani kft", "Nagy Béla", 3); //Azaz ez 2014 5 15.-e !!!!!! (hónap+1 az aktuális dátum)
 		panel.setMezo(es);
 		
 	}

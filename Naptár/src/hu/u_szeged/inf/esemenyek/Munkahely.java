@@ -59,7 +59,7 @@ public class Munkahely extends Esemeny{
 	}
 	
 	public String toString(){
-		String str = "<html><body>"+getNev();
+		String str = "<html><body><b>"+getNev()+"</b>";
 		if (ugyfelNev!="-")
 			str+="<br> ("+ugyfelNev+")</body></html>";
 		return str;
@@ -87,5 +87,9 @@ public class Munkahely extends Esemeny{
 
 	public void setCegNev(String cegNev) {
 		this.cegNev = cegNev;
+	}
+	
+	public void rajzol( ){
+		
 	}
 }
