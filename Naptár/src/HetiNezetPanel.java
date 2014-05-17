@@ -166,7 +166,6 @@ public class HetiNezetPanel extends JPanel {
 	 * 2014.05.17.
 	 */
 	private void updateTable(){
-		this.setMezo(0, 0, "Hello");
 		tabla.getTableHeader().getColumnModel().getColumn(0).setHeaderValue(het+". hét");
 		JTableHeader col = tabla.getTableHeader();
 		col.repaint();
