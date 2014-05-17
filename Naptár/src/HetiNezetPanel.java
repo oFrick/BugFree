@@ -32,12 +32,14 @@ public class HetiNezetPanel extends JPanel {
 	private JButton jobbra;
 	private JButton megnyit;
 	private GridBagConstraints c;
+	private MainFrame frame;
 	
 	private int het;
 
-	public HetiNezetPanel(int het) {
+	public HetiNezetPanel(int het, MainFrame frame) {
 		super();
 		
+		this.frame = frame;
 		this.het = het;		
 		betolt();
 	}
@@ -141,7 +143,12 @@ public class HetiNezetPanel extends JPanel {
 			int ora = kezd.get(Calendar.HOUR_OF_DAY);
 			int perc = kezd.get(Calendar.MINUTE);
 			
-			modell.setEsemeny(esemeny, ora, nap-1);
+			if(nap == 1) nap=7;
+			else nap = nap -1;
+			modell.setEsemeny(esemeny, ora, nap);
+			for(int i=1; i<esemeny.getIdotartam(); i++){
+				modell.setEsemeny(esemeny, ora+i, nap);
+			}
 		}else {
 			//TODO ezt a debug jellegű figyelmeztető üzenetet kivenni
 			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
@@ -167,6 +174,9 @@ public class HetiNezetPanel extends JPanel {
 	 */
 	private void updateTable(){
 		tabla.getTableHeader().getColumnModel().getColumn(0).setHeaderValue(het+". hét");
+		
+		
+		
 		JTableHeader col = tabla.getTableHeader();
 		col.repaint();
 	}
@@ -177,6 +187,8 @@ public class HetiNezetPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				het--;
+				cleartable();
+				frame.betoltHet(het);
 				updateTable();
 				
 			}
@@ -187,10 +199,21 @@ public class HetiNezetPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				het++;
+				cleartable();
+				frame.betoltHet(het);
 				updateTable();
 				
 			}
 		});
+	}
+	
+	private void cleartable(){
+		for(int i=0; i<24; i++){
+			for(int j=1; j<=7; j++){
+				modell.setCella(null, i, j);
+			}
+		}
+		
 	}
 
 }

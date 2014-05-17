@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings({ "unused", "serial" })
 public class MainFrame extends JFrame {
-	private GregorianCalendar mutat;
+	private Calendar datum;
 	private GridBagLayout layout;
 	private GridBagConstraints constraint;
 	private HetiNezetPanel panel;
@@ -28,7 +28,6 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame(String nev){
 		super(nev);
-		mutat = new GregorianCalendar();
 		this.setSize(1024, 756); //Ablak mérete
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ablakbezárás esemény kezelése
 				
@@ -43,17 +42,17 @@ public class MainFrame extends JFrame {
 		constraint = new GridBagConstraints();
 		constraint.fill = GridBagConstraints.HORIZONTAL; // Maximális szélesség, szükséges magasság
 		
-		panel = new HetiNezetPanel(mutat.get(Calendar.WEEK_OF_YEAR));
+		
+		datum = new GregorianCalendar();
+		panel = new HetiNezetPanel(datum.get(Calendar.WEEK_OF_YEAR), this);
 		setContentPane(panel);
 		
-		List<Esemeny> esemenyek = new ArrayList<>();
-		esemenyek=hu.u_szeged.inf.esemenyek.EsemenyOlvaso.Olvass("Sanyi", mutat.get(Calendar.YEAR), mutat.get(Calendar.WEEK_OF_YEAR));
-		for (int i=0; i<esemenyek.size(); i++){
-			panel.setMezo(esemenyek.get(i));
-		}
+		betoltHet(datum.get(Calendar.WEEK_OF_YEAR));
+		
+		
 		
 		//Teszt munkahelyi esemény
-		Munkahely es = new Munkahely("állásinterjú", new GregorianCalendar(2014, 4, 15, 12, 3), 4, "Dani kft", "Nagy Béla", 3); //Azaz ez 2014 5 15.-e !!!!!! (hónap+1 az aktuális dátum)
+		Munkahely es = new Munkahely("állásinterjú", new GregorianCalendar(2014, 4, 18, 12, 3), 4, "Dani kft", "Nagy Béla", 3); //Azaz ez 2014 5 15.-e !!!!!! (hónap+1 az aktuális dátum)
 		panel.setMezo(es);
 		
 	}
@@ -64,6 +63,17 @@ public class MainFrame extends JFrame {
 		this.setJMenuBar(menubar);
 		fajlMenu = new JMenu("Fáj");
 		menubar.add(fajlMenu);
+	}
+	
+	public List<Esemeny> betoltHet(int het){
+		datum.set(Calendar.WEEK_OF_YEAR, het);
+		List<Esemeny> esemenyek = new ArrayList<>();
+		esemenyek = EsemenyOlvaso.Olvass("Sanyi", this.datum.get(Calendar.YEAR), this.datum.get(Calendar.WEEK_OF_YEAR));
+		for (int i=0; i<esemenyek.size(); i++){
+			panel.setMezo(esemenyek.get(i));
+		}
+		
+		return esemenyek;
 	}
 
 }
