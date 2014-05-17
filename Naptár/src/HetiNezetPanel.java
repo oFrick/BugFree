@@ -1,3 +1,4 @@
+
 import hu.u_szeged.inf.esemenyek.Esemeny;
 
 import java.awt.Dimension;
@@ -36,6 +37,12 @@ public class HetiNezetPanel extends JPanel {
 	
 	private int het;
 
+	/**Egyedüli konstruktor. Példányosításhoz meg kell adni, hogy hanyadik hét legyen kezdetbe az aktuális(tárgyévben), illetve
+	 * a program MainFrame objektumát
+	 * 2014.05.17.
+	 * @param het int - a hét, amely kezdetben ki lesz "jelölve"
+	 * @param frame {@link MainFrame} - a program "grafikus Main" osztálya
+	 */
 	public HetiNezetPanel(int het, MainFrame frame) {
 		super();
 		
@@ -44,6 +51,11 @@ public class HetiNezetPanel extends JPanel {
 		betolt();
 	}
 	
+	/**
+	 * Betölti a táblázat alapértékeit, létrehozza a görgethető felületet, a táblamodellt, a GridBag kényszereket, illetve
+	 * meghívja a eseménykezelők betöltéséért felelős metódust
+	 * 2014.05.17.
+	 */
 	private void betolt(){
 		
 		Object[][] data = {
@@ -102,6 +114,11 @@ public class HetiNezetPanel extends JPanel {
 		
 	}
 	
+	/**
+	 * Beállítja a táblázatnak néhány alapértelmezett tulajdonságát. Ez lehet a mérete, a szegély, igazítás,
+	 * oszlopszélességek és sormagasságok.
+	 * 2014.05.17.
+	 */
 	private void tablatBeallit(){
 		
 		scrollPane.setPreferredSize(new Dimension(900, 500));
@@ -158,6 +175,10 @@ public class HetiNezetPanel extends JPanel {
 		
 	}
 	
+	/**
+	 * A panelon lévő egyes gombokat és menüket példányosítja, hozzáadja a panelhez.
+	 * 2014.05.17.
+	 */
 	private void gombokEsMenukHozzaad(){
 		c.gridy=0;
 		c.gridwidth=1;
@@ -181,6 +202,23 @@ public class HetiNezetPanel extends JPanel {
 		col.repaint();
 	}
 	
+	/**
+	 * Törli (alaphelyzetbe állítja) a tábla tartalmát.
+	 * 2014.05.17.
+	 */
+	private void cleartable(){
+		for(int i=0; i<24; i++){
+			for(int j=1; j<=7; j++){
+				modell.setCella(null, i, j);
+			}
+		}
+		
+	}
+	
+	/**
+	 * Hozzáadja a panelhez a szükséges eseménykezelőket
+	 * 2014.05.17.
+	 */
 	private void esemenyKezelokHozzaad(){
 		balra.addActionListener(new ActionListener() {
 			
@@ -205,15 +243,6 @@ public class HetiNezetPanel extends JPanel {
 				
 			}
 		});
-	}
-	
-	private void cleartable(){
-		for(int i=0; i<24; i++){
-			for(int j=1; j<=7; j++){
-				modell.setCella(null, i, j);
-			}
-		}
-		
 	}
 
 }
