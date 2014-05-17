@@ -162,8 +162,8 @@ public class HetiNezetPanel extends JPanel {
 			
 			if(nap == 1) nap=7;
 			else nap = nap -1;
-			modell.setEsemeny(esemeny, ora, nap);
-			for(int i=1; i<esemeny.getIdotartam(); i++){
+			//modell.setEsemeny(esemeny, ora, nap);
+			for(int i=0; i<esemeny.getIdotartam(); i++){
 				modell.setEsemeny(esemeny, ora+i, nap);
 			}
 		}else {
@@ -171,7 +171,6 @@ public class HetiNezetPanel extends JPanel {
 			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 			System.out.println("A(z)"+esemeny.getNev()+" nevű esemény nem ezen a héten van! ("+dt.format(esemeny.getKezdet().getTime())+")!!!");
 		}
-		
 		
 	}
 	
@@ -224,7 +223,8 @@ public class HetiNezetPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				het--;
+				if(het == 1) het=52;
+				else het--;
 				cleartable();
 				frame.betoltHet(-1);
 				updateTable();
@@ -236,7 +236,8 @@ public class HetiNezetPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				het++;
+				if(het == 52) het=1;
+				else het++;
 				cleartable();
 				frame.betoltHet(1);
 				updateTable();
