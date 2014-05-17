@@ -1,7 +1,10 @@
 import hu.u_szeged.inf.esemenyek.Esemeny;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -14,7 +17,9 @@ import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.text.TableView.TableRow;
 
 
@@ -26,6 +31,7 @@ public class HetiNezetPanel extends JPanel {
 	private JButton balra;
 	private JButton jobbra;
 	private JButton megnyit;
+	private GridBagConstraints c;
 	
 	private int het;
 
@@ -82,7 +88,15 @@ public class HetiNezetPanel extends JPanel {
 		
 		scrollPane = new JScrollPane(tabla);
 		tablatBeallit();
-		this.add(scrollPane);
+		
+		c = new GridBagConstraints();
+		gombokEsMenukHozzaad();		
+		c.gridwidth=2;
+		c.gridy=1;
+		c.gridx=0;
+		this.add(scrollPane, c);
+		
+		esemenyKezelokHozzaad();
 		
 	}
 	
@@ -110,7 +124,7 @@ public class HetiNezetPanel extends JPanel {
 	 * 2014.05.11.
 	 */
 	private void setMezo(int sor, int oszlop, String adat){
-		tabla.setValueAt(adat, sor, oszlop);
+		modell.setCella(adat, sor, oszlop);
 	}
 	
 	/**Beállítja a táblában az eseményt.<br><br>
@@ -135,6 +149,48 @@ public class HetiNezetPanel extends JPanel {
 		}
 		
 		
+	}
+	
+	private void gombokEsMenukHozzaad(){
+		c.gridy=0;
+		c.gridwidth=1;
+		balra = new JButton("<<");
+		this.add(balra, c);
+		jobbra = new JButton(">>");
+		this.add(jobbra, c);
+	}
+	
+	/**
+	 * Frissíti a táblában megjelenő adatokat (pl a hét száma), hogy az aktuális
+	 * legyen megjelenítve.
+	 * 2014.05.17.
+	 */
+	private void updateTable(){
+		tabla.getTableHeader().getColumnModel().getColumn(0).setHeaderValue(het+". hét");
+		JTableHeader col = tabla.getTableHeader();
+		col.repaint();
+	}
+	
+	private void esemenyKezelokHozzaad(){
+		balra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				het--;
+				updateTable();
+				
+			}
+		});
+		
+		jobbra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				het++;
+				updateTable();
+				
+			}
+		});
 	}
 
 }
