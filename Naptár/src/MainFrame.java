@@ -23,6 +23,8 @@ public class MainFrame extends JFrame {
 	private GridBagLayout layout;
 	private GridBagConstraints constraint;
 	private HetiNezetPanel panel;
+	private JMenuBar menubar;
+	private JMenu fajlMenu;
 	
 	public MainFrame(String nev){
 		super(nev);
