@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 
@@ -26,7 +27,18 @@ public class MainFrame extends JFrame {
 	private HetiNezetPanel panel;
 	private JMenuBar menubar;
 	private JMenu fajlMenu;
+	private JMenuItem kilepes;
+	private JMenu esemenyMenu;
+	private JMenu ujEsemenyMenu;
+	private JMenuItem ujMunkahely;
+	private JMenuItem ujSzulinap;
+	private JMenuItem ujVizsga;
 	
+	/**A program grafikus main osztályának konstruktora. Paraméterül meg kell adni
+	 * a létrehozandó grafikus felület (ablak) címét.
+	 * 2014.05.17.
+	 * @param nev
+	 */
 	public MainFrame(String nev){
 		super(nev);
 		this.setSize(1024, 756); //Ablak mérete
@@ -37,8 +49,13 @@ public class MainFrame extends JFrame {
 		this.setVisible(true);
 	}
 
+	/**
+	 * Betölti a grafikus felület tartalmát. Alapbeállításokat végez, pl ablak mérete.<br>
+	 * Feltölti a táblát az indításkor alapértelmezett értékekkel. Ez nem más, mint a rendszeridő szerinti
+	 * aktális dátumnak megfelelő héten lévő események heti-nézetben
+	 * 2014.05.17.
+	 */
 	private void loadContent() {
-		// TODO Auto-generated method stub
 		layout = new GridBagLayout();
 		constraint = new GridBagConstraints();
 		constraint.fill = GridBagConstraints.HORIZONTAL; // Maximális szélesség, szükséges magasság
@@ -58,16 +75,32 @@ public class MainFrame extends JFrame {
 		
 	}
 
+	/**
+	 * Példányosítja és betölti a grafikus felületen a menüket
+	 * 2014.05.17.
+	 */
 	private void loadMenus() {
-		// TODO Auto-generated method stub
 		menubar = new JMenuBar();
 		this.setJMenuBar(menubar);
-		fajlMenu = new JMenu("Fáj");
+		fajlMenu = new JMenu("Fájl");
 		menubar.add(fajlMenu);
+		kilepes = new JMenuItem("Kilépés");
+		fajlMenu.add(kilepes);
+		
+		esemenyMenu = new JMenu("Esemény");
+		menubar.add(esemenyMenu);
+		ujEsemenyMenu = new JMenu("Új esemény");
+		esemenyMenu.add(ujEsemenyMenu);
+		ujMunkahely = new JMenuItem("Új munkahely");
+		ujEsemenyMenu.add(ujMunkahely);
+		ujSzulinap = new JMenuItem("Új születésnap");
+		ujEsemenyMenu.add(ujSzulinap);
+		ujVizsga = new JMenuItem("Új vizsga");
+		ujEsemenyMenu.add(ujVizsga);
 	}
 	
 	/**Betölti a megfelelő hetet a táblázatba. A fájlból először beolvassa az aktuális hetet
-	 * @param differencia int - Az előzőleg aktuális héthezképest eltelt hetek száma. Tehát ha egy hetet ugrunk előre, akkor +1.
+	 * @param differencia int - <b>NAGYON FONTOS!</b>Az előzőleg aktuális héthezképest eltelt hetek száma. Tehát ha egy hetet ugrunk előre, akkor +1.
 	 * @return
 	 * 2014.05.17.
 	 */
