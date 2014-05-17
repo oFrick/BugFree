@@ -25,6 +25,50 @@ public class Seged {
 		
 	}
 	
+	public static Boolean datum(int ev, int ho, int nap){
+		if (ho>12 || ho<1)
+			return false;
+		else{
+			switch (ho){
+				case 2:
+					if (ev%100==0 && ev%400!=0){
+						if (nap<1 || nap>28)
+							return false;
+						else
+							return true;
+					}
+					else{
+						if (nap<1 || nap>29)
+							return false;
+						else
+							return true;
+					}
+				case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12:
+					if (nap<1 || nap>31)
+						return false;
+					else
+						return true;
+				case 4:
+				case 6:
+				case 9:
+				case 11:
+					if (nap<1 || nap>30)
+						return false;
+					else
+						return true;
+				default: return false;
+			}
+		}
+		
+		
+	}
+	
 	public static void popupUjMunkahely(MainFrame frame){
 		JTextField nev = new JTextField("Név");
 		JTextField leiras = new JTextField("leírás",15);

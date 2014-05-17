@@ -33,6 +33,11 @@ public class Main {
 
 	private static void SanyiTeszt() throws IOException{
 		// TODO Auto-generated method stub
+		System.out.println(Seged.datum(2000, 2, 29));
+		System.out.println(Seged.datum(2100, 2, 29));
+		System.out.println(Seged.datum(2014, 5, 31));
+		System.out.println(Seged.datum(2014, 6, 31));
+		System.out.println(Seged.datum(2400, 2, 29));
 		System.out.println("--------------------SanyiTeszt vége----------------------------");
 	}
 	
