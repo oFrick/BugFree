@@ -51,6 +51,8 @@ public class MainFrame extends JFrame {
 		for (int i=0; i<esemenyek.size(); i++){
 			panel.setMezo(esemenyek.get(i));
 		}
+		//Munkahely es = new Munkahely("állásinterjú", new GregorianCalendar(2014, 4, 15, 12, 3), 4, "Dani kft", "Nagy Béla", 3); //Azaz ez 2014 5 15.-e !!!!!! (hónap+1 az aktuális dátum)
+		//panel.setMezo(es);
 		
 	}
 
