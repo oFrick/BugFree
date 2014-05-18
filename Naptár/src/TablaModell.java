@@ -1,11 +1,13 @@
 import hu.u_szeged.inf.esemenyek.Esemeny;
-import hu.u_szeged.inf.esemenyek.Munkahely;
-
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 
 public class TablaModell extends DefaultTableModel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8538194201708092102L;
 
 	/**
 	 * 2014.05.11.
@@ -20,8 +22,6 @@ public class TablaModell extends DefaultTableModel {
 		//Esemeny e = ((Esemeny)this.getValueAt(row, column));
 		//e = esemeny;
 		String str = (String)this.getValueAt(row, column);
-		
-		Esemeny torlendo = null;
 		
 		for(Esemeny es : frame.getEsemenyek()){
 			System.out.println(str+" ||| "+es.toString());

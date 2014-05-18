@@ -5,8 +5,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 /**
  * Munkahely osztály az üzleti eseményekhez
  * @author Rátkai Sándor

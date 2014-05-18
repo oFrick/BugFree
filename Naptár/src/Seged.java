@@ -1,13 +1,10 @@
 
 
-import java.awt.TextField;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 public class Seged {
 	

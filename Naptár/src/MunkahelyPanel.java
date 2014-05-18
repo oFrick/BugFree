@@ -2,7 +2,6 @@ import hu.u_szeged.inf.esemenyek.Munkahely;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -10,7 +9,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -33,7 +31,6 @@ public class MunkahelyPanel extends EsemenyPanel {
 	private JLabel cimkeIdotartam;
 	private JLabel cimkeCegNev;
 	private JLabel cimkeUgyfelNev;
-	private JLabel cimkeHatarido;
 	private JTextField nev;
 	private JTextField leiras;
 	private JSpinner ev;
@@ -43,7 +40,6 @@ public class MunkahelyPanel extends EsemenyPanel {
 	private JSpinner idotartam;
 	private JTextField cegNev;
 	private JTextField ugyfelNev;
-	private JSpinner hatarido;
 
 	public MunkahelyPanel(MainFrame frame) {
 		this(frame, null);

@@ -1,4 +1,3 @@
-import hu.u_szeged.inf.esemenyek.Munkahely;
 import hu.u_szeged.inf.esemenyek.Vizsga;
 
 import java.awt.GridBagConstraints;

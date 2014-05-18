@@ -1,6 +1,4 @@
-import hu.u_szeged.inf.esemenyek.Munkahely;
 import hu.u_szeged.inf.esemenyek.SzuliNap;
-import hu.u_szeged.inf.esemenyek.Vizsga;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,6 +16,10 @@ import javax.swing.SpinnerNumberModel;
 
 public class SzulinapPanel extends EsemenyPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 154517317541078163L;
 	private MainFrame frame;
 	private GridBagConstraints c;
 	private boolean isModosit=false;

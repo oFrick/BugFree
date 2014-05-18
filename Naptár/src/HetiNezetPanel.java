@@ -6,29 +6,25 @@ import hu.u_szeged.inf.esemenyek.Vizsga;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-import javax.swing.text.TableView.TableRow;
 
 
 public class HetiNezetPanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7626168131668229026L;
 	private JTable tabla;
 	private JScrollPane scrollPane;
 	private TablaModell modell;
@@ -144,16 +140,6 @@ public class HetiNezetPanel extends JPanel {
 		
 	}
 	
-	/**Beállítja a tába adott cellájának tartalmát
-	 * @param sor int - a sor száma a táblázatban
-	 * @param oszlop int -az oszlop száma a táblázatban
-	 * @param adat String - az adat amit be szeretnénk írni
-	 * 2014.05.11.
-	 */
-	private void setMezo(int sor, int oszlop, String adat){
-		modell.setCella(adat, sor, oszlop);
-	}
-	
 	/**Beállítja a táblában az eseményt.<br><br>
 	 * Ha az esemény nem az aktuális héten található, akkor <b>NEM</b> lesz megjelenítve!!!
 	 * @param esemeny {@link Esemeny} - az esemény, amelyet be szeretnénk szúrni/módosítani szeretnénk<br>
@@ -163,22 +149,18 @@ public class HetiNezetPanel extends JPanel {
 	public boolean setMezo(Esemeny esemeny){
 		Calendar kezd = esemeny.getKezdet();
 		boolean ures = true;
-		boolean ottIsVan = false;
 		if(het == kezd.get(Calendar.WEEK_OF_YEAR)){
-			int ev = kezd.get(Calendar.YEAR);
-			int honap = kezd.get(Calendar.MONTH);
 			int nap = kezd.get(Calendar.DAY_OF_WEEK);
 			int ora = kezd.get(Calendar.HOUR_OF_DAY);
-			int perc = kezd.get(Calendar.MINUTE);
 			int tart = esemeny.getIdotartam();
 			if(nap == 1) nap=7;
 			else nap = nap -1;
-			//modell.setEsemeny(esemeny, ora, nap);
 			ures = true;
 			for(int i=0; i+ora<24 && i<tart; i++){
 				if(!isUres(ora+i, nap)){
 					ures = false;
-					if(i==0) ottIsVan = true;
+					if(i==0) {
+					}
 					break;
 				}
 			}
@@ -191,10 +173,6 @@ public class HetiNezetPanel extends JPanel {
 				Seged.popup("Abban az időintervallumban már létezik esemény!", "Esemény létrehozása sikertelen", frame);
 			}
 			
-		}else {
-			//TODO ezt a debug jellegű figyelmeztető üzenetet kivenni
-			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-			System.out.println("A(z)"+esemeny.getNev()+" nevű esemény nem ezen a héten van! ("+dt.format(esemeny.getKezdet().getTime())+")!!!");
 		}
 		
 		if(ures) return true;
@@ -298,8 +276,6 @@ public class HetiNezetPanel extends JPanel {
 				int sor = getTabla().getSelectedRow();
 				int oszlop = getTabla().getSelectedColumn();
 				String str = (String)getTabla().getValueAt(sor, oszlop);
-				
-				Esemeny torlendo = null;
 				
 				for(Esemeny es : frame.getEsemenyek()){
 					System.out.println(str+" ||| "+es.toString());

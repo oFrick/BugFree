@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 
 public abstract class EsemenyPanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7835285641611179326L;
 	protected JButton okGomb;
 	protected JButton megseGomb;
 	
