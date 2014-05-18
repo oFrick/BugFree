@@ -37,6 +37,7 @@ public class SzuliNap extends Esemeny{
 	 * @param ev Év melyben az esemény történik
 	 */
 	public SzuliNap(Scanner Olvaso, int ev){
+		this.setTipus("Szulinap");
 		this.unnepelt = Olvaso.nextLine();
 		this.setKezdet(new GregorianCalendar(ev, Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt()));
 		this.setIdotartam(Olvaso.nextInt());

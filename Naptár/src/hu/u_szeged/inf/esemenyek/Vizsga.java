@@ -35,6 +35,7 @@ public class Vizsga extends Esemeny{
 	 * @param ev Év melyben az esemény történik
 	 */
 	public Vizsga(Scanner Olvaso, int ev){
+		this.setTipus("Vizsga");
 		this.tantargy = Olvaso.nextLine();
 		this.setKezdet(new GregorianCalendar(ev, Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt()));
 		this.setIdotartam(Olvaso.nextInt());
