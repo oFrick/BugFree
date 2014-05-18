@@ -66,8 +66,6 @@ public class SzuliNap extends Esemeny{
 		if (evesLesz>=0)
 			str+="<br>"+evesLesz+".";
 		str+=" születésnapja";
-		if (!getLeiras().equals("-"))
-			str+="<br>"+getLeiras();
 		str+="</body></html>";
 		return str;
 	}
