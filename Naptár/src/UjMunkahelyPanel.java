@@ -88,4 +88,12 @@ public class UjMunkahelyPanel extends JPanel {
 		
 		
 	}
+	
+	/**
+	 * Leellenőrzi, hogy a bevitt adatok helyesek-e
+	 * 2014.05.18.
+	 */
+	private void checkHelyessek(){
+		
+	}
 }
