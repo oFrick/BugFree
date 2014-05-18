@@ -137,6 +137,15 @@ public class MunkahelyPanel extends EsemenyPanel {
 				}
 			}
 		});
+		
+		megseGomb.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setDefaultPane();
+				
+			}
+		});
 	}
 	
 	/**
