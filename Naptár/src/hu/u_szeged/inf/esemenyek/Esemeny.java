@@ -44,6 +44,10 @@ public abstract class Esemeny{
 	public String toString(){
 		return getNev();
 	}
+	
+	public String LS(){
+		return getNev();
+	}
 
 	public String getTipus() {
 		return tipus;
