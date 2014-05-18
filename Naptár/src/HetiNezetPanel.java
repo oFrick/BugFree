@@ -98,7 +98,7 @@ public class HetiNezetPanel extends JPanel {
 		tabla = new JTable();
 		modell = new TablaModell(data, columnNames);
 		tabla.setModel(modell);
-		tabla.setEnabled(false);
+		tabla.setEnabled(true);
 		
 		scrollPane = new JScrollPane(tabla);
 		tablatBeallit();
@@ -166,6 +166,7 @@ public class HetiNezetPanel extends JPanel {
 			for(int i=0; i<esemeny.getIdotartam(); i++){
 				modell.setEsemeny(esemeny, ora+i, nap);
 			}
+			
 		}else {
 			//TODO ezt a debug jellegű figyelmeztető üzenetet kivenni
 			SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
@@ -205,7 +206,7 @@ public class HetiNezetPanel extends JPanel {
 	 * Törli (alaphelyzetbe állítja) a tábla tartalmát.
 	 * 2014.05.17.
 	 */
-	private void cleartable(){
+	public void cleartable(){
 		for(int i=0; i<24; i++){
 			for(int j=1; j<=7; j++){
 				modell.setCella(null, i, j);
