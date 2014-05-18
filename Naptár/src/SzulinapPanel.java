@@ -1,5 +1,6 @@
 import hu.u_szeged.inf.esemenyek.Munkahely;
 import hu.u_szeged.inf.esemenyek.SzuliNap;
+import hu.u_szeged.inf.esemenyek.Vizsga;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -19,6 +20,8 @@ public class SzulinapPanel extends EsemenyPanel {
 	
 	private MainFrame frame;
 	private GridBagConstraints c;
+	private boolean isModosit=false;
+	private SzuliNap esemeny;
 	
 	private JLabel cimkeDatum;
 	private JLabel cimkeIdotartam;
@@ -37,6 +40,13 @@ public class SzulinapPanel extends EsemenyPanel {
 	private JTextField ajandek;
 
 	public SzulinapPanel(MainFrame frame) {
+		this(frame, null);
+	}
+	
+	public SzulinapPanel(MainFrame frame, SzuliNap esemeny){
+		if(esemeny != null) isModosit = true;
+		this.esemeny = esemeny;
+		
 		this.frame = frame;
 		this.setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
@@ -59,7 +69,9 @@ public class SzulinapPanel extends EsemenyPanel {
 					System.out.println("datum: "+df.format(datum.getTime()));
 					
 					SzuliNap szn = new SzuliNap(unnepelt.getText(), datum, (Integer)idotartam.getValue(), (Integer)evesLesz.getValue(), helyszin.getText(), ajandek.getText(), "");
-					frame.ujEsemeny(szn);
+					//frame.ujEsemeny(szn);
+					if(!isModosit) frame.ujEsemeny(szn);
+					else frame.modositEsemeny(szn, esemeny);
 					
 					frame.setDefaultPane();
 				}else Seged.popup("Bevitt adatok nem megfelelőek!", "Sikertelen esemény létrehozás", frame);
@@ -139,6 +151,19 @@ public class SzulinapPanel extends EsemenyPanel {
 		this.add(ajandek, c);
 		
 		this.kezeloGombHozzaad(c);
+		
+		if(isModosit){
+			Calendar cal = esemeny.getKezdet();
+			
+			ev.setValue(cal.get(Calendar.YEAR));
+			honap.setValue(cal.get(Calendar.MONTH));
+			nap.setValue(cal.get(Calendar.DAY_OF_MONTH));
+			ora.setValue(cal.get(Calendar.HOUR_OF_DAY));
+			idotartam.setValue(esemeny.getIdotartam());
+			evesLesz.setValue(esemeny.getEvesLesz());
+			unnepelt.setText(esemeny.getUnnepelt());
+			ajandek.setText(esemeny.getAjandek());
+		}
 		
 	}
 	

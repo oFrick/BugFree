@@ -1,6 +1,7 @@
 
 import hu.u_szeged.inf.esemenyek.Esemeny;
 import hu.u_szeged.inf.esemenyek.Munkahely;
+import hu.u_szeged.inf.esemenyek.SzuliNap;
 import hu.u_szeged.inf.esemenyek.Vizsga;
 
 import java.awt.Dimension;
@@ -305,6 +306,7 @@ public class HetiNezetPanel extends JPanel {
 					if(es.toString().equals(str)){
 						if(es instanceof Munkahely) frame.setPane(new MunkahelyPanel(frame, (Munkahely)es));
 						else if(es instanceof Vizsga) frame.setPane(new VizsgaPanel(frame, (Vizsga)es));
+						else if(es instanceof SzuliNap) frame.setPane(new SzulinapPanel(frame, (SzuliNap)es));
 						break;
 					}
 				}
