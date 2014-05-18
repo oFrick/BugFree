@@ -24,12 +24,16 @@ public class UjMunkahelyPanel extends JPanel {
 	private JLabel cimkeLeiras;
 	private JLabel cimkeDatum;
 	private JLabel cimkeIdotartam;
+	private JLabel cimkeCegNev;
+	private JLabel cimkeUgyfelNev;
 	private JTextField nev;
 	private JTextField leiras;
 	private JSpinner ev;
 	private JSpinner honap;
 	private JSpinner nap;
 	private JSpinner idotartam;
+	private JTextField cegNev;
+	private JTextField ugyfelNev;
 
 	public UjMunkahelyPanel(MainFrame frame) {
 		this.frame = frame;
@@ -84,6 +88,7 @@ public class UjMunkahelyPanel extends JPanel {
 		
 		c.gridy=4;
 		c.gridx=0;
+		
 		
 		
 		
