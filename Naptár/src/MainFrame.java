@@ -139,7 +139,7 @@ public class MainFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				setPane(new UjMunkahelyPanel(sajat));				
+				setPane(new MunkahelyPanel(sajat));				
 			}
 		});
 	}
