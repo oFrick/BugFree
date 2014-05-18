@@ -62,7 +62,7 @@ public class SzulinapPanel extends EsemenyPanel {
 					frame.ujEsemeny(szn);
 					
 					frame.setDefaultPane();
-				}
+				}else Seged.popup("Bevitt adatok nem megfelelőek!", "Sikertelen esemény létrehozás", frame);
 				
 			}
 		});
@@ -147,7 +147,7 @@ public class SzulinapPanel extends EsemenyPanel {
 	 * @return true, ha nem tortent hiba
 	 */
 	protected boolean checkHelyesseg() {
-		if (Seged.datum(((Integer) this.ev.getValue()), (Integer) this.honap.getValue(), (Integer) this.nap.getValue()) == true) {
+		if (!Seged.datum(((Integer) this.ev.getValue()), (Integer) this.honap.getValue(), (Integer) this.nap.getValue()) == true) {
 			return false;
 		}
 		if ((Integer) this.ora.getValue() < 0 || (Integer) this.ora.getValue() > 23) {

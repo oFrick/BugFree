@@ -133,7 +133,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 					frame.ujEsemeny(mh);
 					
 					frame.setDefaultPane();
-				}
+				} else Seged.popup("Bevitt adatok nem megfelelőek!", "Sikertelen esemény létrehozás", frame);
 			}
 		});
 		
@@ -166,7 +166,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 		if ((this.ugyfelNev.getText()).length() < 10) {
 			return false;
 		}
-		if (Seged.datum(((Integer) this.ev.getValue()), (Integer) this.honap.getValue(), (Integer) this.nap.getValue()) == true) {
+		if (!Seged.datum(((Integer) this.ev.getValue()), (Integer) this.honap.getValue(), (Integer) this.nap.getValue()) == true) {
 			return false;
 		}
 		if ((Integer) this.idotartam.getValue() < 1) {
