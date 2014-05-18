@@ -15,7 +15,6 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
-
 public class MunkahelyPanel extends EsemenyPanel {
 	
 	/**
@@ -151,25 +150,26 @@ public class MunkahelyPanel extends EsemenyPanel {
 	/**
 	 * Leellenőrzi, hogy a bevitt adatok helyesek-e
 	 * 2014.05.18.
+	 * @return true, ha nem tortent hiba
 	 */
 	private boolean checkHelyessek(){
-		
-		if (getText(this.nev).length < 4) {
+
+		if ((this.nev.getText()).length() < 4) {
 			return false;
 		}
-		if (getText(this.leiras).length < 20) {
+		if ((this.leiras.getText()).length() < 20) {
 			return false;
 		}
-		if (getText(this.cegNev).length < 4) {
+		if ((this.cegNev.getText()).length() < 4) {
 			return false;
 		}
-		if (getText(this.ugyfelNev).length < 10) {
+		if ((this.ugyfelNev.getText()).length() < 10) {
 			return false;
 		}
-		if (Seged.datum(((int)getValue(this.ev)), (int)getValue(this.honap), (int)getValue(this.nap)) == true) {
+		if (Seged.datum(((Integer) this.ev.getValue()), (Integer) this.honap.getValue(), (Integer) this.nap.getValue()) == true) {
 			return false;
 		}
-		if (((int)getValue(this.idotartam)) < 1) {
+		if ((Integer) this.idotartam.getValue() < 1) {
 			return false;
 		}
 		return true; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest

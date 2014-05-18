@@ -142,9 +142,30 @@ public class SzulinapPanel extends EsemenyPanel {
 		
 	}
 	
+	/**
+	 * 
+	 * @return true, ha nem tortent hiba
+	 */
 	protected boolean checkHelyesseg() {
-		// TODO Kidolgozni
-		return true;
+		if (Seged.datum(((Integer) this.ev.getValue()), (Integer) this.honap.getValue(), (Integer) this.nap.getValue()) == true) {
+			return false;
+		}
+		if ((Integer) this.ora.getValue() < 0 || (Integer) this.ora.getValue() > 23) {
+			return false;
+		}
+		if ((Integer) this.evesLesz.getValue() < 1 || (Integer) this.evesLesz.getValue() > 110) {
+			return false;
+		}
+		if ((this.unnepelt.getText()).length() < 4) {
+			return false;
+		}
+		if ((this.helyszin.getText()).length() < 4) {
+			return false;
+		}
+		if ((this.ajandek.getText()).length() < 4) {
+			return false;
+		}
+		return true; //Ha minden ertek megfelelo, nem adunk vissza hibauzenetet
 	}
 
 }
