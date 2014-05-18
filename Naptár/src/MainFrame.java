@@ -107,8 +107,18 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void ujEsemeny(Esemeny e){
-		esemenyek.add(e);
-		EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.MONTH), esemenyek);
+		Calendar ujdatum = e.getKezdet();
+		if(ujdatum.get(Calendar.WEEK_OF_YEAR) == datum.get(Calendar.WEEK_OF_YEAR) && ujdatum.get(Calendar.YEAR) == datum.get(Calendar.YEAR)){
+			esemenyek.add(e);
+			EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.WEEK_OF_YEAR), esemenyek);
+		}else{
+			EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.WEEK_OF_YEAR), esemenyek);
+			List<Esemeny> ujEsemenyek = new ArrayList<Esemeny>();
+			ujEsemenyek = EsemenyOlvaso.Olvass("Sanyi", ujdatum.get(Calendar.YEAR), ujdatum.get(Calendar.WEEK_OF_YEAR));
+			ujEsemenyek.add(e);
+			EsemenyOlvaso.Irj("Sanyi", ujdatum.get(Calendar.YEAR), ujdatum.get(Calendar.WEEK_OF_YEAR), ujEsemenyek);
+			
+		}
 	}
 	
 	public void torolEsemeny(Esemeny e){
@@ -129,6 +139,7 @@ public class MainFrame extends JFrame {
 		esemenyek = new ArrayList<>();
 		esemenyek = EsemenyOlvaso.Olvass("Sanyi", this.datum.get(Calendar.YEAR), this.datum.get(Calendar.WEEK_OF_YEAR));
 		for (int i=0; i<esemenyek.size(); i++){
+			System.out.println("Típus: "+esemenyek.get(i).getTipus());
 			panel.setMezo(esemenyek.get(i));
 		}
 		
@@ -141,6 +152,8 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void setDefaultPane(){
+		panel.cleartable();
+		esemenyek = betoltHet(0);
 		setContentPane(panel);
 		panel.revalidate();
 	}
