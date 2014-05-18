@@ -153,17 +153,17 @@ public class MunkahelyPanel extends EsemenyPanel {
 	 * 2014.05.18.
 	 */
 	private boolean checkHelyessek(){
-		/*
-		if (getTextField(this.nev).length < 4) {
+		
+		if (getText(this.nev).length < 4) {
 			return false;
 		}
-		if (getTextField(this.leiras).length < 20) {
+		if (getText(this.leiras).length < 20) {
 			return false;
 		}
-		if (getTextField(this.cegNev).length < 4) {
+		if (getText(this.cegNev).length < 4) {
 			return false;
 		}
-		if (getTextField(this.ugyfelNev).length < 10) {
+		if (getText(this.ugyfelNev).length < 10) {
 			return false;
 		}
 		if (Seged.datum(((int)getValue(this.ev)), (int)getValue(this.honap), (int)getValue(this.nap)) == true) {
@@ -172,8 +172,6 @@ public class MunkahelyPanel extends EsemenyPanel {
 		if (((int)getValue(this.idotartam)) < 1) {
 			return false;
 		}
-		return false; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
-		*/
-		return true; //CSAK TESZTELÉS MIATT!!
+		return true; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
 	}
 }
