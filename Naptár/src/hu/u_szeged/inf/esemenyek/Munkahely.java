@@ -68,7 +68,10 @@ public class Munkahely extends Esemeny{
 	public String toString(){
 		String str = "<html><body><b>"+getNev()+"</b>";
 		if (!ugyfelNev.equals("-"))
-			str+="<br> ("+ugyfelNev+")</body></html>";
+			str+="<br> ("+ugyfelNev+")";
+		if (!getLeiras().equals("-"))
+			str+="<br>"+getLeiras();
+		str+="</body></html>";
 		return str;
 	}
 	
