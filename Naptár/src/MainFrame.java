@@ -106,6 +106,16 @@ public class MainFrame extends JFrame {
 		ujEsemenyMenu.add(ujVizsga);
 	}
 	
+	public void ujEsemeny(Esemeny e){
+		esemenyek.add(e);
+		EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.MONTH), esemenyek);
+	}
+	
+	public void torolEsemeny(Esemeny e){
+		esemenyek.remove(e);
+		EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.MONTH), esemenyek);
+	}
+	
 	/**Betölti a megfelelő hetet a táblázatba. A fájlból először beolvassa az aktuális hetet
 	 * @param differencia int - <b>NAGYON FONTOS!</b>Az előzőleg aktuális héthezképest eltelt hetek száma. Tehát ha egy hetet ugrunk előre, akkor +1.
 	 * @return

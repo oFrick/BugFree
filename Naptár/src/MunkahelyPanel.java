@@ -1,3 +1,5 @@
+import hu.u_szeged.inf.esemenyek.Munkahely;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
@@ -35,6 +37,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 	private JSpinner ev;
 	private JSpinner honap;
 	private JSpinner nap;
+	private JSpinner ora;
 	private JSpinner idotartam;
 	private JTextField cegNev;
 	private JTextField ugyfelNev;
@@ -82,6 +85,8 @@ public class MunkahelyPanel extends EsemenyPanel {
 		c.gridx=3;
 		nap = new JSpinner(new SpinnerNumberModel(most.get(Calendar.DAY_OF_WEEK), 1, 31, 1));
 		this.add(nap, c);
+		c.gridx=4;
+		ora = new JSpinner(new SpinnerNumberModel(most.get(Calendar.HOUR_OF_DAY), 0, 23, 1));
 		
 		c.gridy=3;
 		c.gridx=0;
@@ -118,7 +123,8 @@ public class MunkahelyPanel extends EsemenyPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(checkHelyesseg()){
-					
+					//alendar datum = new Gregori
+					//frame.ujEsemeny(e);
 				}
 			}
 		});
@@ -129,6 +135,6 @@ public class MunkahelyPanel extends EsemenyPanel {
 	 * 2014.05.18.
 	 */
 	private boolean checkHelyesseg(){
-		return false;
+		return true;
 	}
 }
