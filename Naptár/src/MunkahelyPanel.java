@@ -23,6 +23,8 @@ public class MunkahelyPanel extends EsemenyPanel {
 	private static final long serialVersionUID = -1733438848681116239L;
 	private MainFrame frame;
 	private GridBagConstraints c;
+	private boolean isModosit=false;
+	private Munkahely esemeny;
 	
 	
 	private JLabel cimkeNev;
@@ -44,6 +46,13 @@ public class MunkahelyPanel extends EsemenyPanel {
 	private JSpinner hatarido;
 
 	public MunkahelyPanel(MainFrame frame) {
+		this(frame, null);
+	}
+	
+	public MunkahelyPanel(MainFrame frame, Munkahely esemeny){
+		if(esemeny != null) this.isModosit = true;
+		this.esemeny = esemeny;
+		
 		this.frame = frame;
 		this.setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
@@ -117,6 +126,11 @@ public class MunkahelyPanel extends EsemenyPanel {
 		
 		this.kezeloGombHozzaad(c);
 		
+		if(isModosit){
+			nev.setText(esemeny.getNev());
+			
+		}
+		
 	}
 	
 	private void EsemenyKezelok(){
@@ -129,7 +143,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh-mm");
 					System.out.println("datum: "+df.format(datum.getTime()));
 					
-					Munkahely mh = new Munkahely(nev.getText(), datum, (Integer)idotartam.getValue(), cegNev.getText(), ugyfelNev.getText(), 3);
+					Munkahely mh = new Munkahely(nev.getText(), datum, (Integer)idotartam.getValue(), cegNev.getText(), ugyfelNev.getText(), 3, leiras.getText());
 					frame.ujEsemeny(mh);
 					
 					frame.setDefaultPane();
