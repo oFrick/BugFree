@@ -1,6 +1,8 @@
 
 
 import java.awt.TextField;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -26,6 +28,7 @@ public class Seged {
 	}
 	
 	public static Boolean datum(int ev, int ho, int nap){
+		Boolean eredmeny;
 		if (ho>12 || ho<1)
 			return false;
 		else{
@@ -33,16 +36,17 @@ public class Seged {
 				case 2:
 					if (ev%100==0 && ev%400!=0){
 						if (nap<1 || nap>28)
-							return false;
+							eredmeny = false;
 						else
-							return true;
+							eredmeny = true;
 					}
 					else{
 						if (nap<1 || nap>29)
-							return false;
+							eredmeny = false;
 						else
-							return true;
+							eredmeny = true;
 					}
+					break;
 				case 1:
 				case 3:
 				case 5:
@@ -51,22 +55,31 @@ public class Seged {
 				case 10:
 				case 12:
 					if (nap<1 || nap>31)
-						return false;
+						eredmeny = false;
 					else
-						return true;
+						eredmeny = true;
+					break;
 				case 4:
 				case 6:
 				case 9:
 				case 11:
 					if (nap<1 || nap>30)
-						return false;
+						eredmeny = false;
 					else
-						return true;
-				default: return false;
+						eredmeny = true;
+					break;
+				default:
+					eredmeny = false;
+					break;
 			}
 		}
-		
-		
+		if (eredmeny){
+			Calendar m = new GregorianCalendar();
+			Calendar most = new GregorianCalendar(m.get(Calendar.YEAR), m.get(Calendar.MONTH), m.get(Calendar.DAY_OF_MONTH));
+			Calendar az = new GregorianCalendar(ev, ho-1, nap);
+			eredmeny = most.compareTo(az)<=0;
+		}
+		return eredmeny;
 	}
 	
 	public static void popupUjMunkahely(MainFrame frame){

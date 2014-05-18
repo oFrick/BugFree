@@ -78,8 +78,9 @@ public class Vizsga extends Esemeny{
 	}
 	
 	public String toString(){
-		String output=null;
-		output=tantargy+" vizsga";
-		return output;
+		String str="<html><body>";
+		str+=tantargy;
+		str+="<br>vizsga</body></html>";
+		return str;
 	}
 }

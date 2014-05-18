@@ -58,11 +58,11 @@ public class SzuliNap extends Esemeny{
 	}
 	
 	public String toString(){
-		String output=unnepelt;
+		String str="<html><body><b>"+unnepelt+"</b>";
 		if (evesLesz>=0)
-			output+=" "+evesLesz+".";
-		output+=" születésnapja";
-		return output;
+			str+="<br>"+evesLesz+".";
+		str+=" születésnapja</body></html>";
+		return str;
 	}
 	public String getUnnepelt() {
 		return unnepelt;
