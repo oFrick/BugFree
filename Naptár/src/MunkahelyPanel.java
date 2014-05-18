@@ -155,7 +155,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 					
 					Munkahely mh = new Munkahely(nev.getText(), datum, (Integer)idotartam.getValue(), cegNev.getText(), ugyfelNev.getText(), 3, leiras.getText());
 					if(!isModosit) frame.ujEsemeny(mh);
-					else frame.modositEsemeny(mh, esemeny);
+					else frame.modositEsemeny(mh);
 					
 					frame.setDefaultPane();
 				} else Seged.popup("Bevitt adatok nem megfelelőek!", "Sikertelen esemény létrehozás", frame);
