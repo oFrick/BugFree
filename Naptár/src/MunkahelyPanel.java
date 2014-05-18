@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 
-public class UjMunkahelyPanel extends JPanel {
+public class MunkahelyPanel extends EsemenyPanel {
 	
 	/**
 	 * 
@@ -20,12 +20,14 @@ public class UjMunkahelyPanel extends JPanel {
 	private MainFrame frame;
 	private GridBagConstraints c;
 	
+	
 	private JLabel cimkeNev;
 	private JLabel cimkeLeiras;
 	private JLabel cimkeDatum;
 	private JLabel cimkeIdotartam;
 	private JLabel cimkeCegNev;
 	private JLabel cimkeUgyfelNev;
+	private JLabel cimkeHatarido;
 	private JTextField nev;
 	private JTextField leiras;
 	private JSpinner ev;
@@ -34,8 +36,9 @@ public class UjMunkahelyPanel extends JPanel {
 	private JSpinner idotartam;
 	private JTextField cegNev;
 	private JTextField ugyfelNev;
+	private JSpinner hatarido;
 
-	public UjMunkahelyPanel(MainFrame frame) {
+	public MunkahelyPanel(MainFrame frame) {
 		this.frame = frame;
 		this.setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
@@ -88,6 +91,19 @@ public class UjMunkahelyPanel extends JPanel {
 		
 		c.gridy=4;
 		c.gridx=0;
+		cimkeCegNev = new JLabel("Cég neve:");
+		this.add(cimkeCegNev, c);
+		c.gridx=1;
+		cegNev = new JTextField(15);
+		this.add(cegNev, c);
+		
+		c.gridy=5;
+		c.gridx=0;
+		cimkeUgyfelNev = new JLabel("Ügyfél neve:");
+		this.add(cimkeUgyfelNev, c);
+		c.gridx=1;
+		ugyfelNev = new JTextField(15);
+		this.add(ugyfelNev, c);
 		
 		
 		
