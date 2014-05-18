@@ -155,11 +155,14 @@ public class HetiNezetPanel extends JPanel {
 	
 	/**Beállítja a táblában az eseményt.<br><br>
 	 * Ha az esemény nem az aktuális héten található, akkor <b>NEM</b> lesz megjelenítve!!!
-	 * @param esemeny {@link Esemeny} - az esemény, amelyet be szeretnénk szúrni/módosítani szeretnénk
+	 * @param esemeny {@link Esemeny} - az esemény, amelyet be szeretnénk szúrni/módosítani szeretnénk<br>
+	 * Ha már létezik esemény abban az időben, ahova újat szeretnénk létrehozni, akkor false-al tér vissza. Egyébként true-val.
 	 * 2014.05.17.
 	 */
-	public void setMezo(Esemeny esemeny){
+	public boolean setMezo(Esemeny esemeny){
 		Calendar kezd = esemeny.getKezdet();
+		boolean ures = true;
+		boolean ottIsVan = false;
 		if(het == kezd.get(Calendar.WEEK_OF_YEAR)){
 			int ev = kezd.get(Calendar.YEAR);
 			int honap = kezd.get(Calendar.MONTH);
@@ -170,8 +173,21 @@ public class HetiNezetPanel extends JPanel {
 			if(nap == 1) nap=7;
 			else nap = nap -1;
 			//modell.setEsemeny(esemeny, ora, nap);
+			ures = true;
 			for(int i=0; i+ora<24 && i<tart; i++){
-				modell.setEsemeny(esemeny, ora+i, nap, frame);
+				if(!isUres(ora+i, nap)){
+					ures = false;
+					if(i==0) ottIsVan = true;
+					break;
+				}
+			}
+			if(ures){
+				for(int i=0; i+ora<24 && i<tart; i++){
+					modell.setEsemeny(esemeny, ora+i, nap, frame);
+				}	
+			}else{
+				frame.torolEsemeny(esemeny);
+				Seged.popup("Abban az időintervallumban már létezik esemény!", "Esemény létrehozása sikertelen", frame);
 			}
 			
 		}else {
@@ -180,6 +196,18 @@ public class HetiNezetPanel extends JPanel {
 			System.out.println("A(z)"+esemeny.getNev()+" nevű esemény nem ezen a héten van! ("+dt.format(esemeny.getKezdet().getTime())+")!!!");
 		}
 		
+		if(ures) return true;
+		else return false;
+		
+	}
+	
+	/**Meghatározza, hogy az adott cellában van-e már esemény, vagy sem
+	 * @return
+	 * 2014.05.18.
+	 */
+	private boolean isUres(int row, int column){
+		if(modell.getValueAt(row, column) != null) return false;
+		return true;
 	}
 	
 	public JTable getTabla() {
