@@ -138,24 +138,24 @@ public class MunkahelyPanel extends EsemenyPanel {
 	private boolean checkHelyessek(){
 		/*
 		if (getTextField(this.nev).length < 4) {
-			return true;
+			return false;
 		}
 		if (getTextField(this.leiras).length < 20) {
-			return true;
+			return false;
 		}
 		if (getTextField(this.cegNev).length < 4) {
-			return true;
+			return false;
 		}
 		if (getTextField(this.ugyfelNev).length < 10) {
-			return true;
+			return false;
 		}
 		if (Seged.datum(((int)getValue(this.ev)), (int)getValue(this.honap), (int)getValue(this.nap)) == true) {
-			return true;
+			return false;
 		}
 		if (((int)getValue(this.idotartam)) < 1) {
-			return true;
+			return false;
 		}
-		*/
-		return false; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
+		 */
+		return true; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
 	}
 }
