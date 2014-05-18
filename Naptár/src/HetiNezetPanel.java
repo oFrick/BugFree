@@ -175,6 +175,14 @@ public class HetiNezetPanel extends JPanel {
 		
 	}
 	
+	public JTable getTabla() {
+		return tabla;
+	}
+	
+	public TablaModell getModell(){
+		return modell;
+	}
+
 	/**
 	 * A panelon lévő egyes gombokat és menüket példányosítja, hozzáadja a panelhez.
 	 * 2014.05.17.

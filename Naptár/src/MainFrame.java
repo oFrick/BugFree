@@ -19,6 +19,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.table.AbstractTableModel;
 
 
 @SuppressWarnings({ "unused", "serial" })
@@ -32,6 +33,7 @@ public class MainFrame extends JFrame {
 	private JMenu fajlMenu;
 	private JMenuItem kilepes;
 	private JMenu esemenyMenu;
+	private JMenuItem torolEsemeny;
 	private JMenu ujEsemenyMenu;
 	private JMenuItem ujMunkahely;
 	private JMenuItem ujSzulinap;
@@ -104,6 +106,9 @@ public class MainFrame extends JFrame {
 		ujEsemenyMenu.add(ujSzulinap);
 		ujVizsga = new JMenuItem("Új vizsga");
 		ujEsemenyMenu.add(ujVizsga);
+		
+		torolEsemeny = new JMenuItem("Esemény törlése");
+		esemenyMenu.add(torolEsemeny);
 	}
 	
 	public void ujEsemeny(Esemeny e){
@@ -123,7 +128,8 @@ public class MainFrame extends JFrame {
 	
 	public void torolEsemeny(Esemeny e){
 		esemenyek.remove(e);
-		EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.MONTH), esemenyek);
+		EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.WEEK_OF_YEAR), esemenyek);
+		panel.getModell().fireTableDataChanged();
 	}
 	
 	/**Betölti a megfelelő hetet a táblázatba. A fájlból először beolvassa az aktuális hetet
@@ -172,6 +178,27 @@ public class MainFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				setPane(new SzulinapPanel(sajat));	
+				
+			}
+		});
+		
+		torolEsemeny.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int sor = panel.getTabla().getSelectedRow();
+				int oszlop = panel.getTabla().getSelectedColumn();
+				String str = (String) panel.getTabla().getValueAt(sor, oszlop);
+				
+				Esemeny torlendo = null;
+				
+				for(Esemeny e : esemenyek){
+					System.out.println(str+" ||| "+e.toString());
+					if(e.toString().equals(str)){
+						torolEsemeny(e);
+						break;
+					}
+				}
 				
 			}
 		});
