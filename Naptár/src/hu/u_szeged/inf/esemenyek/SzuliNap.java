@@ -21,7 +21,7 @@ public class SzuliNap extends Esemeny{
 	 * @param kezdet Buli időpontja
 	 * @param idotartam Buli hossza
 	 */
-	public SzuliNap(String unnepelt, GregorianCalendar kezdet, int idotartam, int evesLesz, String helyszin, String ajandek){
+	public SzuliNap(String unnepelt, GregorianCalendar kezdet, int idotartam, int evesLesz, String helyszin, String ajandek, String leiras){
 		this.setTipus("Szulinap");
 		this.setKezdet(kezdet);
 		this.setIdotartam(idotartam);
@@ -30,6 +30,7 @@ public class SzuliNap extends Esemeny{
 		this.setNev(toString());
 		this.helyszin=helyszin;
 		this.ajandek=ajandek;
+		this.setLeiras(leiras);
 	}
 	/**
 	 * Önmagát beolvasó Születésnap esemény létrehozása
@@ -45,6 +46,7 @@ public class SzuliNap extends Esemeny{
 		Olvaso.nextLine();
 		this.helyszin = Olvaso.nextLine();
 		this.ajandek = Olvaso.nextLine();
+		this.setLeiras(Olvaso.nextLine());
 	}
 	/**
 	 * Önmagát kiírató metódus
@@ -56,13 +58,17 @@ public class SzuliNap extends Esemeny{
 		Iro.println(getEvesLesz());
 		Iro.println(getHelyszin());
 		Iro.println(getAjandek());
+		Iro.println(getLeiras());
 	}
 	
 	public String toString(){
 		String str="<html><body><b>"+unnepelt+"</b>";
 		if (evesLesz>=0)
 			str+="<br>"+evesLesz+".";
-		str+=" születésnapja</body></html>";
+		str+=" születésnapja";
+		if (!getLeiras().equals("-"))
+			str+="<br>"+getLeiras();
+		str+="</body></html>";
 		return str;
 	}
 	public String getUnnepelt() {

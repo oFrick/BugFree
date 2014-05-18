@@ -20,14 +20,16 @@ public class Vizsga extends Esemeny{
 	 * @param idotartam Vizsga időtartama
 	 * @param hely Vizsga helye
 	 * @param vizsgaztato Vizsgáztató tanár/professzor neve
+	 * @param leiras Esemény leírása
 	 */
-	public Vizsga(String tantargy, GregorianCalendar kezdet, int idotartam, String hely, String vizsgaztato){
+	public Vizsga(String tantargy, GregorianCalendar kezdet, int idotartam, String hely, String vizsgaztato, String leiras){
 		this.setTipus("Vizsga");
 		this.setTantargy(tantargy);
 		this.setKezdet(kezdet);
 		this.setIdotartam(idotartam);
 		this.setHely(hely);
 		this.setVizsgaztato(vizsgaztato);
+		this.setLeiras(leiras);
 	}
 	/**
 	 * Önmagát beolvasó Vizsga esemény létrehozása
@@ -42,6 +44,7 @@ public class Vizsga extends Esemeny{
 		Olvaso.nextLine();
 		this.hely = Olvaso.nextLine();
 		this.vizsgaztato = Olvaso.nextLine();
+		this.setLeiras(Olvaso.nextLine());
 	}
 	/**
 	 * Önmagát kiírató metódus
@@ -52,6 +55,17 @@ public class Vizsga extends Esemeny{
 		Iro.printf("%02d %02d %02d %02d %d\n", getKezdet().get(Calendar.MONTH), getKezdet().get(Calendar.DAY_OF_MONTH), getKezdet().get(Calendar.HOUR), getKezdet().get(Calendar.MINUTE), getIdotartam());
 		Iro.println(getHely());
 		Iro.println(getVizsgaztato());
+		Iro.println(getLeiras());
+	}
+	
+	public String toString(){
+		String str="<html><body>";
+		str+=tantargy;
+		str+="<br>vizsga";
+		if (!getLeiras().equals("-"))
+			str+="<br>"+getLeiras();
+		str+="</body></html>";
+		return str;
 	}
 	
 	public String getTantargy() {
@@ -76,12 +90,5 @@ public class Vizsga extends Esemeny{
 
 	public void setVizsgaztato(String vizsgaztato) {
 		this.vizsgaztato = vizsgaztato;
-	}
-	
-	public String toString(){
-		String str="<html><body>";
-		str+=tantargy;
-		str+="<br>vizsga</body></html>";
-		return str;
 	}
 }

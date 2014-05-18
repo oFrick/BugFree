@@ -8,6 +8,7 @@ public abstract class Esemeny{
 	private String tipus;
 	private Calendar kezdet;
 	private int idotartam;
+	private String leiras;
 	
 	/*public Esemeny(String nev, Calendar kezdet, int idotartam){
 		
@@ -50,6 +51,14 @@ public abstract class Esemeny{
 
 	public void setTipus(String tipus) {
 		this.tipus = tipus;
+	}
+
+	public String getLeiras() {
+		return leiras;
+	}
+
+	public void setLeiras(String leiras) {
+		this.leiras = leiras;
 	}
 	
 	

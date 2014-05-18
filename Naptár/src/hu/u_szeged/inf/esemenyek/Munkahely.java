@@ -26,7 +26,7 @@ public class Munkahely extends Esemeny{
 	 * @param ugyfelNev Ügyfél neve
 	 * @param hataridoNapok Hány nap határidő van rá
 	 */
-	public Munkahely(String nev, Calendar kezdet, int idotartam, String cegNev, String ugyfelNev, int hataridoNapok){
+	public Munkahely(String nev, Calendar kezdet, int idotartam, String cegNev, String ugyfelNev, int hataridoNapok, String leiras){
 		this.setTipus("Munka");
 		this.setNev(nev);
 		this.setKezdet(kezdet);
@@ -34,6 +34,7 @@ public class Munkahely extends Esemeny{
 		this.cegNev = cegNev;
 		this.ugyfelNev=ugyfelNev;
 		this.hataridoNapok = hataridoNapok;
+		this.setLeiras(leiras);
 	}
 	/**
 	 * Önmagát beolvasó Munkahelyi esemény létrehozása
@@ -49,6 +50,7 @@ public class Munkahely extends Esemeny{
 		Olvaso.nextLine();
 		this.ugyfelNev = Olvaso.nextLine();
 		this.cegNev = Olvaso.nextLine();
+		this.setLeiras(Olvaso.nextLine());
 	}
 	/**
 	 * Önmagát kiírató metódus
@@ -60,11 +62,12 @@ public class Munkahely extends Esemeny{
 		Iro.printf("%d\n", getHataridoNapok());
 		Iro.println(getUgyfelNev());
 		Iro.println(getCegNev());
+		Iro.println(getLeiras());
 	}
 	
 	public String toString(){
 		String str = "<html><body><b>"+getNev()+"</b>";
-		if (ugyfelNev!="-")
+		if (!ugyfelNev.equals("-"))
 			str+="<br> ("+ugyfelNev+")</body></html>";
 		return str;
 	}
