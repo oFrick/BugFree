@@ -133,7 +133,6 @@ public class MainFrame extends JFrame {
 			
 			if(es.equals(regi)){
 				regiE = es;
-				System.out.println("OKÉÉÉÉÉÉÉÉÉÉÉÉÉ!");
 				break;
 			}
 		}
