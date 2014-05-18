@@ -56,7 +56,7 @@ public class VizsgaPanel extends EsemenyPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(checkHelyesseg()){
 					GregorianCalendar datum = new GregorianCalendar((Integer)ev.getValue(), (Integer)honap.getValue()-1, (Integer)nap.getValue(), (Integer)ora.getValue(), 0);
-					Vizsga v = new Vizsga(tantargy.getText(), datum, (Integer)idotartam.getValue(), hely.getText(), vizsgaztato.getText());
+					Vizsga v = new Vizsga(tantargy.getText(), datum, (Integer)idotartam.getValue(), hely.getText(), vizsgaztato.getText(), leiras.getText());
 					frame.ujEsemeny(v);
 					
 					frame.setDefaultPane();

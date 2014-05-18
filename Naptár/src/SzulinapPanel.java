@@ -58,7 +58,7 @@ public class SzulinapPanel extends EsemenyPanel {
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh-mm");
 					System.out.println("datum: "+df.format(datum.getTime()));
 					
-					SzuliNap szn = new SzuliNap(unnepelt.getText(), datum, (Integer)idotartam.getValue(), (Integer)evesLesz.getValue(), helyszin.getText(), ajandek.getText());
+					SzuliNap szn = new SzuliNap(unnepelt.getText(), datum, (Integer)idotartam.getValue(), (Integer)evesLesz.getValue(), helyszin.getText(), ajandek.getText(), "");
 					frame.ujEsemeny(szn);
 					
 					frame.setDefaultPane();
