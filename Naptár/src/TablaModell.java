@@ -1,4 +1,5 @@
 import hu.u_szeged.inf.esemenyek.Esemeny;
+import hu.u_szeged.inf.esemenyek.Munkahely;
 
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
@@ -15,9 +16,21 @@ public class TablaModell extends DefaultTableModel {
 		super(data, columnNames);
 	}
 
-	public void setEsemeny(Esemeny esemeny, int row, int column) {
-		Esemeny e = ((Esemeny)this.getValueAt(row, column));
-		e = esemeny;
+	public void setEsemeny(Esemeny esemeny, int row, int column, MainFrame frame) {
+		//Esemeny e = ((Esemeny)this.getValueAt(row, column));
+		//e = esemeny;
+		String str = (String)this.getValueAt(row, column);
+		
+		Esemeny torlendo = null;
+		
+		for(Esemeny es : frame.getEsemenyek()){
+			System.out.println(str+" ||| "+es.toString());
+			if(es.toString().equals(str)){
+				es = esemeny;
+				break;
+			}
+		}
+		
 		super.setValueAt(esemeny.toString(), row, column);
 	}
 	

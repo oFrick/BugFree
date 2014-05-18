@@ -1,5 +1,6 @@
 
 import hu.u_szeged.inf.esemenyek.Esemeny;
+import hu.u_szeged.inf.esemenyek.Munkahely;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -31,7 +32,7 @@ public class HetiNezetPanel extends JPanel {
 	private TablaModell modell;
 	private JButton balra;
 	private JButton jobbra;
-	private JButton megnyit;
+	private JButton modosit;
 	private GridBagConstraints c;
 	private MainFrame frame;
 	
@@ -110,6 +111,11 @@ public class HetiNezetPanel extends JPanel {
 		c.gridx=0;
 		this.add(scrollPane, c);
 		
+		c.gridy=2;
+		c.gridx=0;
+		modosit = new JButton("Módosítás/Megnyitás");
+		this.add(modosit, c);
+		
 		esemenyKezelokHozzaad();
 		
 	}
@@ -164,7 +170,7 @@ public class HetiNezetPanel extends JPanel {
 			else nap = nap -1;
 			//modell.setEsemeny(esemeny, ora, nap);
 			for(int i=0; i<esemeny.getIdotartam(); i++){
-				modell.setEsemeny(esemeny, ora+i, nap);
+				modell.setEsemeny(esemeny, ora+i, nap, frame);
 			}
 			
 		}else {
@@ -250,6 +256,28 @@ public class HetiNezetPanel extends JPanel {
 				cleartable();
 				frame.betoltHet(1);
 				updateTable();
+				
+			}
+		});
+		
+		modosit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int sor = getTabla().getSelectedRow();
+				int oszlop = getTabla().getSelectedColumn();
+				String str = (String)getTabla().getValueAt(sor, oszlop);
+				
+				Esemeny torlendo = null;
+				
+				for(Esemeny es : frame.getEsemenyek()){
+					System.out.println(str+" ||| "+es.toString());
+					if(es.toString().equals(str)){
+						if(es instanceof Munkahely) frame.setPane(new MunkahelyPanel(frame, (Munkahely)es));
+						break;
+					}
+				}
 				
 			}
 		});

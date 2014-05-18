@@ -126,6 +126,22 @@ public class MainFrame extends JFrame {
 		}
 	}
 	
+	public void modositEsemeny(Esemeny e, Esemeny regi){
+		Calendar ujdatum = e.getKezdet();
+		Esemeny regiE=null;
+		for(Esemeny es : esemenyek){
+			
+			if(es.equals(regi)){
+				regiE = es;
+				break;
+			}
+		}
+		esemenyek.remove(regiE);
+		esemenyek.add(e);
+		System.out.println("MÁSOLÁS");
+		EsemenyOlvaso.Irj("Sanyi", ujdatum.get(Calendar.YEAR), ujdatum.get(Calendar.WEEK_OF_YEAR), esemenyek);
+	}
+	
 	public void torolEsemeny(Esemeny e){
 		esemenyek.remove(e);
 		EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.WEEK_OF_YEAR), esemenyek);
@@ -144,6 +160,7 @@ public class MainFrame extends JFrame {
 			System.out.println("Hét váltása erre: "+df.format(datum.getTime()));
 		esemenyek = new ArrayList<>();
 		esemenyek = EsemenyOlvaso.Olvass("Sanyi", this.datum.get(Calendar.YEAR), this.datum.get(Calendar.WEEK_OF_YEAR));
+		panel.cleartable();
 		for (int i=0; i<esemenyek.size(); i++){
 			System.out.println("Típus: "+esemenyek.get(i).getTipus());
 			panel.setMezo(esemenyek.get(i));
@@ -162,6 +179,10 @@ public class MainFrame extends JFrame {
 		esemenyek = betoltHet(0);
 		setContentPane(panel);
 		panel.revalidate();
+	}
+	
+	public List<Esemeny> getEsemenyek(){
+		return esemenyek;
 	}
 	
 	private void EsemenyKezelok(){

@@ -128,6 +128,16 @@ public class MunkahelyPanel extends EsemenyPanel {
 		
 		if(isModosit){
 			nev.setText(esemeny.getNev());
+			leiras.setText(esemeny.getLeiras());
+			Calendar cal = esemeny.getKezdet();
+			
+			ev.setValue(cal.get(Calendar.YEAR));
+			honap.setValue(cal.get(Calendar.MONTH));
+			nap.setValue(cal.get(Calendar.DAY_OF_MONTH));
+			ora.setValue(cal.get(Calendar.HOUR_OF_DAY));
+			idotartam.setValue(esemeny.getIdotartam());
+			cegNev.setText(esemeny.getCegNev());
+			ugyfelNev.setText(esemeny.getUgyfelNev());
 			
 		}
 		
@@ -144,7 +154,8 @@ public class MunkahelyPanel extends EsemenyPanel {
 					System.out.println("datum: "+df.format(datum.getTime()));
 					
 					Munkahely mh = new Munkahely(nev.getText(), datum, (Integer)idotartam.getValue(), cegNev.getText(), ugyfelNev.getText(), 3, leiras.getText());
-					frame.ujEsemeny(mh);
+					if(!isModosit) frame.ujEsemeny(mh);
+					else frame.modositEsemeny(mh, esemeny);
 					
 					frame.setDefaultPane();
 				} else Seged.popup("Bevitt adatok nem megfelelőek!", "Sikertelen esemény létrehozás", frame);
