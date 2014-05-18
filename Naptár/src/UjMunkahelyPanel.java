@@ -98,7 +98,20 @@ public class UjMunkahelyPanel extends JPanel {
 	 * Leellenőrzi, hogy a bevitt adatok helyesek-e
 	 * 2014.05.18.
 	 */
-	private void checkHelyessek(){
+	private boolean checkHelyessek(){
+		if (getTextField(this.nev).length < 4) {
+			return true;
+		}
+		if (getTextField(this.leiras).length < 20) {
+			return true;
+		}
+		if (getTextField(this.cegNev).length < 4) {
+			return true;
+		}
+		if (getTextField(this.ugyfelNev).length < 10) {
+			return true;
+		}
+		
 		
 	}
 }
