@@ -182,6 +182,15 @@ public class MainFrame extends JFrame {
 			}
 		});
 		
+		ujVizsga.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setPane(new VizsgaPanel(sajat));
+				
+			}
+		});
+		
 		torolEsemeny.addActionListener(new ActionListener() {
 			
 			@Override

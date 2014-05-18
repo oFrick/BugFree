@@ -37,7 +37,7 @@ public class VizsgaPanel extends EsemenyPanel {
 	private JTextField hely;
 	private JTextField vizsgaztato;
 
-	public VizsgaPanel() {
+	public VizsgaPanel(MainFrame frame) {
 		this.frame = frame;
 		this.setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
