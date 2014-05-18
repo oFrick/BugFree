@@ -123,7 +123,8 @@ public class MunkahelyPanel extends EsemenyPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(checkHelyessek()){
-					//alendar datum = new Gregori
+					Calendar datum = new GregorianCalendar((Integer)nap.getValue(), (Integer)honap.getValue(), (Integer)nap.getValue(), (Integer)ora.getValue(), 0);
+					
 					//frame.ujEsemeny(e);
 				}
 			}
@@ -134,7 +135,6 @@ public class MunkahelyPanel extends EsemenyPanel {
 	 * Leellenőrzi, hogy a bevitt adatok helyesek-e
 	 * 2014.05.18.
 	 */
-
 	private boolean checkHelyessek(){
 		/*
 		if (getTextField(this.nev).length < 4) {
@@ -155,7 +155,8 @@ public class MunkahelyPanel extends EsemenyPanel {
 		if (((int)getValue(this.idotartam)) < 1) {
 			return false;
 		}
-		 */
-		return true; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
+		return false; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
+		*/
+		return true; //CSAK TESZTELÉS MIATT!!
 	}
 }
