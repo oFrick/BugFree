@@ -36,6 +36,7 @@ public class MainFrame extends JFrame {
 	private JMenuItem ujMunkahely;
 	private JMenuItem ujSzulinap;
 	private JMenuItem ujVizsga;
+	private List<Esemeny> esemenyek;
 	
 	/**A program grafikus main osztályának konstruktora. Paraméterül meg kell adni
 	 * a létrehozandó grafikus felület (ablak) címét.
@@ -115,7 +116,7 @@ public class MainFrame extends JFrame {
 			//TODO debug eltávolítása
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			System.out.println("Hét váltása erre: "+df.format(datum.getTime()));
-		List<Esemeny> esemenyek = new ArrayList<>();
+		esemenyek = new ArrayList<>();
 		esemenyek = EsemenyOlvaso.Olvass("Sanyi", this.datum.get(Calendar.YEAR), this.datum.get(Calendar.WEEK_OF_YEAR));
 		for (int i=0; i<esemenyek.size(); i++){
 			panel.setMezo(esemenyek.get(i));
