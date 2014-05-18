@@ -41,6 +41,7 @@ public class Munkahely extends Esemeny{
 	 * @param ev Év melyben az esemény történik
 	 */
 	public Munkahely(Scanner Olvaso, int ev){
+		this.setTipus("Munka");
 		this.setNev(Olvaso.nextLine());
 		this.setKezdet(new GregorianCalendar(ev, Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt(), Olvaso.nextInt()));
 		this.setIdotartam(Olvaso.nextInt());

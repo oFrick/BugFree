@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -52,6 +53,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 		c.gridwidth=1;
 		
 		panelFeltolt();
+		EsemenyKezelok();
 	}
 
 	private void panelFeltolt() {
@@ -74,7 +76,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 		
 		c.gridx=0;
 		c.gridy=2;
-		cimkeDatum = new JLabel("Esemény kezdete: (év, hónap, nap):");
+		cimkeDatum = new JLabel("Esemény kezdete: (év, hónap, nap, óra):");
 		this.add(cimkeDatum, c);
 		c.gridx=1;
 		ev = new JSpinner(new SpinnerNumberModel(most.get(Calendar.YEAR), most.get(Calendar.YEAR), most.get(Calendar.YEAR)+5, 1));
@@ -87,6 +89,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 		this.add(nap, c);
 		c.gridx=4;
 		ora = new JSpinner(new SpinnerNumberModel(most.get(Calendar.HOUR_OF_DAY), 0, 23, 1));
+		this.add(ora, c);
 		
 		c.gridy=3;
 		c.gridx=0;
@@ -123,10 +126,24 @@ public class MunkahelyPanel extends EsemenyPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(checkHelyessek()){
-					Calendar datum = new GregorianCalendar((Integer)nap.getValue(), (Integer)honap.getValue(), (Integer)nap.getValue(), (Integer)ora.getValue(), 0);
+					Calendar datum = new GregorianCalendar((Integer)ev.getValue(), (Integer)honap.getValue()-1, (Integer)nap.getValue(), (Integer)ora.getValue(), 0);
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh-mm");
+					System.out.println("datum: "+df.format(datum.getTime()));
 					
-					//frame.ujEsemeny(e);
+					Munkahely mh = new Munkahely(nev.getText(), datum, (Integer)idotartam.getValue(), cegNev.getText(), ugyfelNev.getText(), 3);
+					frame.ujEsemeny(mh);
+					
+					frame.setDefaultPane();
 				}
+			}
+		});
+		
+		megseGomb.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.setDefaultPane();
+				
 			}
 		});
 	}
