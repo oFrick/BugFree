@@ -127,7 +127,12 @@ public class MunkahelyPanel extends EsemenyPanel {
 		if (getTextField(this.ugyfelNev).length < 10) {
 			return true;
 		}
-		
-		
+		if (Seged.datum(((int)getValue(this.ev)), (int)getValue(this.honap), (int)getValue(this.nap)) == true) {
+			return true;
+		}
+		if (((int)getValue(this.idotartam)) < 1) {
+			return true;
+		}
+		return false; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
 	}
 }
