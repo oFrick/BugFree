@@ -13,11 +13,9 @@ public class TablaModell extends DefaultTableModel {
 	 */
 	public TablaModell(Object[][] data, Object[] columnNames) {
 		super(data, columnNames);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void setEsemeny(Esemeny esemeny, int row, int column) {
-		// TODO Auto-generated method stub
 		Esemeny e = ((Esemeny)this.getValueAt(row, column));
 		e = esemeny;
 		super.setValueAt(esemeny.toString(), row, column);
@@ -38,7 +36,6 @@ public class TablaModell extends DefaultTableModel {
 
 	@Override
 	public boolean isCellEditable(int row, int column) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
