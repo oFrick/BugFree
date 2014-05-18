@@ -129,7 +129,11 @@ public class MunkahelyPanel extends EsemenyPanel {
 					Calendar datum = new GregorianCalendar((Integer)ev.getValue(), (Integer)honap.getValue()-1, (Integer)nap.getValue(), (Integer)ora.getValue(), 0);
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh-mm");
 					System.out.println("datum: "+df.format(datum.getTime()));
-					//frame.ujEsemeny(e);
+					
+					Munkahely mh = new Munkahely(nev.getText(), datum, (Integer)idotartam.getValue(), cegNev.getText(), ugyfelNev.getText(), 3);
+					frame.ujEsemeny(mh);
+					
+					frame.setDefaultPane();
 				}
 			}
 		});
