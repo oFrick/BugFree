@@ -1,6 +1,8 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -106,15 +108,27 @@ public class MunkahelyPanel extends EsemenyPanel {
 		this.add(ugyfelNev, c);
 		
 		
+		this.kezeloGombHozzaad(c);
 		
-		
+	}
+	
+	private void EsemenyKezelok(){
+		okGomb.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(checkHelyesseg()){
+					
+				}
+			}
+		});
 	}
 	
 	/**
 	 * Leellenőrzi, hogy a bevitt adatok helyesek-e
 	 * 2014.05.18.
 	 */
-	private void checkHelyessek(){
-		
+	private boolean checkHelyesseg(){
+		return false;
 	}
 }
