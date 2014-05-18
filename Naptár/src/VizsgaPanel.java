@@ -1,3 +1,4 @@
+import hu.u_szeged.inf.esemenyek.Munkahely;
 import hu.u_szeged.inf.esemenyek.Vizsga;
 
 import java.awt.GridBagConstraints;
@@ -18,6 +19,8 @@ public class VizsgaPanel extends EsemenyPanel {
 	private static final long serialVersionUID = 6545497628797746484L;
 	private MainFrame frame;
 	private GridBagConstraints c;
+	private boolean isModosit=false;
+	private Vizsga esemeny;
 	
 	private JLabel cimkeNev;
 	private JLabel cimkeLeiras;
@@ -38,6 +41,14 @@ public class VizsgaPanel extends EsemenyPanel {
 	private JTextField vizsgaztato;
 
 	public VizsgaPanel(MainFrame frame) {
+		this(frame, null);
+	}
+	
+	public VizsgaPanel(MainFrame frame, Vizsga esemeny){
+		if(esemeny != null) this.isModosit = true;
+		this.esemeny = esemeny;
+		
+		
 		this.frame = frame;
 		this.setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
