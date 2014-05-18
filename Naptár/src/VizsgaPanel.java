@@ -86,10 +86,33 @@ public class VizsgaPanel extends EsemenyPanel {
 		});
 		
 	}
-
+	/**
+	 * Ellenorzi, hogy az esemeny tulajdonsagai megfeleloek-e
+	 * @return true, ha minden ertek elfogadhato
+	 */
 	protected boolean checkHelyesseg() {
-		// TODO Megvalósítani
-		return true;
+		if ((this.nev.getText()).length() < 4) {
+			return false;
+		}
+		if ((this.leiras.getText()).length() < 20) {
+			return false;
+		}
+		if ((this.tantargy.getText()).length() < 4) {
+			return false;
+		}
+		if ((this.vizsgaztato.getText()).length() < 10) {
+			return false;
+		}
+		if ((this.hely.getText()).length() < 4) {
+			return false;
+		}
+		if (!Seged.datum(((Integer) this.ev.getValue()), (Integer) this.honap.getValue(), (Integer) this.nap.getValue()) == true) {
+			return false;
+		}
+		if ((Integer) this.idotartam.getValue() < 1) {
+			return false;
+		}
+		return true; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
 	}
 
 	private void panelFeltolt() {
