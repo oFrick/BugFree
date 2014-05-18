@@ -68,7 +68,8 @@ public class VizsgaPanel extends EsemenyPanel {
 				if(checkHelyesseg()){
 					GregorianCalendar datum = new GregorianCalendar((Integer)ev.getValue(), (Integer)honap.getValue()-1, (Integer)nap.getValue(), (Integer)ora.getValue(), 0);
 					Vizsga v = new Vizsga(tantargy.getText(), datum, (Integer)idotartam.getValue(), hely.getText(), vizsgaztato.getText(), leiras.getText());
-					frame.ujEsemeny(v);
+					if(!isModosit) frame.ujEsemeny(v);
+					else frame.modositEsemeny(v, esemeny);
 					
 					frame.setDefaultPane();
 				} else Seged.popup("Bevitt adatok nem megfelelőek!", "Sikertelen esemény létrehozás", frame);
@@ -94,7 +95,7 @@ public class VizsgaPanel extends EsemenyPanel {
 		if ((this.nev.getText()).length() < 4) {
 			return false;
 		}
-		if ((this.leiras.getText()).length() < 20) {
+		if ((this.leiras.getText()).length() < 10) {
 			return false;
 		}
 		if ((this.tantargy.getText()).length() < 4) {
@@ -180,6 +181,21 @@ Calendar most = new GregorianCalendar();
 		c.gridx=1;
 		vizsgaztato = new JTextField(15);
 		this.add(vizsgaztato, c);
+		
+		if(isModosit){
+			nev.setText(esemeny.getNev());
+			leiras.setText(esemeny.getLeiras());
+			Calendar cal = esemeny.getKezdet();
+			
+			ev.setValue(cal.get(Calendar.YEAR));
+			honap.setValue(cal.get(Calendar.MONTH));
+			nap.setValue(cal.get(Calendar.DAY_OF_MONTH));
+			ora.setValue(cal.get(Calendar.HOUR_OF_DAY));
+			idotartam.setValue(esemeny.getIdotartam());
+			tantargy.setText(esemeny.getTantargy());
+			hely.setText(esemeny.getHely());
+			vizsgaztato.setText(esemeny.getVizsgaztato());
+		}
 		
 		this.kezeloGombHozzaad(c);
 		

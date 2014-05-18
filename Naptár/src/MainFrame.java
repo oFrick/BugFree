@@ -133,13 +133,16 @@ public class MainFrame extends JFrame {
 			
 			if(es.equals(regi)){
 				regiE = es;
+				System.out.println("OKÉÉÉÉÉÉÉÉÉÉÉÉÉ!");
 				break;
 			}
 		}
 		esemenyek.remove(regiE);
-		esemenyek.add(e);
+		EsemenyOlvaso.Irj("Sanyi", datum.get(Calendar.YEAR), datum.get(Calendar.WEEK_OF_YEAR), esemenyek);
+		List<Esemeny> ujesemenyek = EsemenyOlvaso.Olvass("Sanyi", ujdatum.get(Calendar.YEAR), ujdatum.get(Calendar.WEEK_OF_YEAR));
+		ujesemenyek.add(e);
 		System.out.println("MÁSOLÁS");
-		EsemenyOlvaso.Irj("Sanyi", ujdatum.get(Calendar.YEAR), ujdatum.get(Calendar.WEEK_OF_YEAR), esemenyek);
+		EsemenyOlvaso.Irj("Sanyi", ujdatum.get(Calendar.YEAR), ujdatum.get(Calendar.WEEK_OF_YEAR), ujesemenyek);
 	}
 	
 	public void torolEsemeny(Esemeny e){
