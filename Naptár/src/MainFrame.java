@@ -235,6 +235,15 @@ public class MainFrame extends JFrame {
 				
 			}
 		});
+		
+		kilepes.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+				
+			}
+		});
 	}
 
 }
