@@ -122,7 +122,7 @@ public class MunkahelyPanel extends EsemenyPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(checkHelyesseg()){
+				if(checkHelyessek()){
 					//alendar datum = new Gregori
 					//frame.ujEsemeny(e);
 				}
@@ -134,7 +134,28 @@ public class MunkahelyPanel extends EsemenyPanel {
 	 * Leellenőrzi, hogy a bevitt adatok helyesek-e
 	 * 2014.05.18.
 	 */
-	private boolean checkHelyesseg(){
-		return true;
+
+	private boolean checkHelyessek(){
+		/*
+		if (getTextField(this.nev).length < 4) {
+			return true;
+		}
+		if (getTextField(this.leiras).length < 20) {
+			return true;
+		}
+		if (getTextField(this.cegNev).length < 4) {
+			return true;
+		}
+		if (getTextField(this.ugyfelNev).length < 10) {
+			return true;
+		}
+		if (Seged.datum(((int)getValue(this.ev)), (int)getValue(this.honap), (int)getValue(this.nap)) == true) {
+			return true;
+		}
+		if (((int)getValue(this.idotartam)) < 1) {
+			return true;
+		}
+		*/
+		return false; //Ha minden ertek megfelelo, nem adunk vissza hibajelzest
 	}
 }
