@@ -159,11 +159,11 @@ public class HetiNezetPanel extends JPanel {
 			int nap = kezd.get(Calendar.DAY_OF_WEEK);
 			int ora = kezd.get(Calendar.HOUR_OF_DAY);
 			int perc = kezd.get(Calendar.MINUTE);
-			
+			int tart = esemeny.getIdotartam();
 			if(nap == 1) nap=7;
 			else nap = nap -1;
 			//modell.setEsemeny(esemeny, ora, nap);
-			for(int i=0; i<esemeny.getIdotartam(); i++){
+			for(int i=0; i+ora<24 && i<tart; i++){
 				modell.setEsemeny(esemeny, ora+i, nap);
 			}
 			
