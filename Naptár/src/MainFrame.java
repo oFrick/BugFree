@@ -166,6 +166,15 @@ public class MainFrame extends JFrame {
 				setPane(new MunkahelyPanel(sajat));				
 			}
 		});
+		
+		ujSzulinap.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				setPane(new SzulinapPanel(sajat));	
+				
+			}
+		});
 	}
 
 }
